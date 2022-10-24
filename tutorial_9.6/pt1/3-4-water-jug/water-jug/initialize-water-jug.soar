@@ -2,7 +2,7 @@
 #If no task is selected
 #then propose the initialize-water-jug operator
 sp {water-jug*propose*initialize-water-jug
-   (state <s> ^superstate nil
+   (state <s> ^type state
              -^name)
 -->
    (<s> ^operator <o> +)
