@@ -1,0 +1,9 @@
+sp {lorem-ipsum
+
+    (state <s> ^type state)
+
+-->
+
+    (write |Loren ipsum doloren doren sit amet|)
+    (halt)
+}

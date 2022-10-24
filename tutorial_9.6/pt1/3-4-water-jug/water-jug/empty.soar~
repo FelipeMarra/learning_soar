@@ -1,0 +1,28 @@
+#waterjug-*propose*empty
+#If the taks is water-jug and there is a jug that is not empty
+#then propose emptying that jug
+sp{water-jug*propose*empty
+   (state <s> ^name water-jug
+              ^jug <j>)
+   (<j> ^contents > 0)
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name empty
+        ^empty-jug <j>)
+}
+
+#water-jug*apply*empty
+#If the task is water-jug and the empty operator is given
+#then set that jug's content to 0
+sp{water-jug*apply*empty
+   (state <s> ^name water-jug
+              ^operator <o>
+              ^jug <j>)
+   (<o> ^name empty
+        ^empty-jug <j>)
+   (<j> ^volume <v>
+        ^contents <c>)
+-->
+   (<j> ^contents 0
+        ^contents <c> -)
+}

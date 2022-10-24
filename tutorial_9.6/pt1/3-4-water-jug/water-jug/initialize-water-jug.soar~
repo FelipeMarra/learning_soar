@@ -1,0 +1,38 @@
+#water-jug*propose*initialize-water-jug
+#If no task is selected
+#then propose the initialize-water-jug operator
+sp {water-jug*propose*initialize-water-jug
+   (state <s> ^type state
+             -^name)
+-->
+   (<s> ^operator <o> +)
+   (<o> ^name initialize-water-jug)
+}
+
+#water-jug*apply*initialize-water-jug
+#If the initializer water-jug operator is selected,
+#then create an empty 5 gallon jug and an empty 3 gallon jug
+sp {apply*initialize-water-jug
+   (state <s> ^operator.name initialize-water-jug)
+-->
+   (<s> ^name water-jug
+#        ^last-operator none
+        ^jug <j1>
+        ^jug <j2>)
+   (<j1> ^volume 5
+         ^contents 0)
+   (<j2> ^volume 3
+         ^contents 0)
+}
+
+#water-jug*apply*initialize*create*desired-state
+#If the task is water-jug 
+#then create a desired state - a desired jug - to serve as the agents goal
+#the goal-test file under elaborations folder contains the rule that runs the test
+sp {water-jug*apply*initialize*create*desired-state
+ (state <s> ^operator.name initialize-water-jug)
+-->
+ (<s> ^desired.jug <k>)
+ (<k> ^volume 3
+      ^contents 1)
+}
