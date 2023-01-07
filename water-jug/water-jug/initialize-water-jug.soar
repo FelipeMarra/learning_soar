@@ -24,3 +24,31 @@ sp {apply*initialize-water-jug
    (<j2> ^volume 3
          ^contents 0)
 }
+
+#water-jug apply initialize create desired-state
+#if the task is water-jug create WME tio describe the 
+#desired jug
+sp {water-jug*apply*initialize*create*desired-state
+   (state <s> ^operator.name initialize-water-jug)
+-->
+   (<s> ^desired.jug <dj>)
+
+   (<dj> ^volume 3
+         ^contents 1)
+}
+
+# water-jug*detect*goal*achieved
+#if the task is water-jug and there is a jug with volume 
+#and contents equal to state.desired.jug, write that
+#the problem has been solved and halt.
+sp {water-jug*detect*goal*achieved
+   (state <s> ^name water-jug
+              ^desired.jug <dj>
+              ^jug <j>)
+   
+   (<dj> ^volume <v> ^contents <c>)
+   (<j> ^volume <v> ^contents <c>)
+-->
+   (write (crlf) |The problem has been solved.|)
+   (halt)
+}
