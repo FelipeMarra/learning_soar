@@ -24,13 +24,3 @@ sp {apply*initialize-water-jug
    (<j2> ^volume 3
          ^contents 0)
 }
-
-#water jug propose fill
-#If task water jug && a jug is not full propose fill
-
-#water jug propose empty
-#if task water jug && a jug is not empty propose empty
-
-#water jug propose pour
-#if task water jug && j1 is not empty && j2 is not full
-#popose pouring from j1 into j2

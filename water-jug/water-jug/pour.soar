@@ -1,0 +1,69 @@
+#water jug propose pour
+#if task water jug && j1 is not empty && j2 is not full
+#popose pouring from j1 into j2
+sp {water-jug*popose*pour
+    (state <s> ^name water-jug
+               ^jug <j1>
+               ^jug { <j2> <> <j1> })
+
+    (<j1> ^contents > 0)
+    (<j2> ^empty > 0)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+}
+
+#water-jug apply pour will NOT empty empty-jug
+#If operator is "pour", and j1.c > j2.empty
+#pour from the jug in the empty-jug(j1) attr 
+#(j1.c = j1.c - j2.empty) into the fill-jug(j2)
+#attr (j2.c = j2.v)
+sp {water-jug*apply*pour*will-not-empty-empty-jug
+    (state <s> ^name water-jug
+               ^operator <o>)
+
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+
+    (<j2> ^empty <e2>
+          ^volume <v2>
+          ^contents <c2>)
+
+    (<j1> ^contents {<c1> > <e2>})
+
+-->
+    (<j1> ^contents (- <c1> <e2>)
+          ^contents <c1> -)
+    
+    (<j2> ^contents <v2>
+          ^contents <c2> -)
+}
+
+#water-jug apply pour will empty empty-jug
+#If operator is "pour", and j1.c <= j2.empty
+#pour from the jug in the empty-jug(j1) attr 
+#(j1.c = 0) into the fill-jug(j2)
+#attr (j2.c = j1.c + j2.c)
+sp {water-jug*apply*pour*will-empty-empty-jug
+    (state <s> ^name water-jug
+               ^operator <o>)
+
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+
+    (<j2> ^empty <e2>
+          ^contents <c2>)
+
+    (<j1> ^contents {<c1> <= <e2>})
+
+-->
+    (<j1> ^contents 0
+          ^contents <c1> -)
+    
+    (<j2> ^contents (+ <c1> <c2>)
+          ^contents <c2> -)
+}

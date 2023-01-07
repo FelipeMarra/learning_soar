@@ -1,0 +1,28 @@
+#water jug propose fill
+#If task water jug && a jug is not full propose fill
+sp {water-jug*propose*fill
+    (state <s> ^name water-jug
+               ^jug <j>)
+    (<j> ^empty > 0)
+    -->
+    (<s> ^operator <o> + =)
+    (<o> ^name fill
+        ^fill-jug <j>)
+}
+
+#water-jug apply fill
+#If operator is "fill", fill the jug
+#in the fill-jug attr (contents = volume)
+sp {water-jug*apply*fill
+    (state <s> ^name water-jug
+               ^operator <o>)
+
+    (<o> ^name fill
+         ^fill-jug <j>)
+
+    (<j> ^volume <v>
+         ^contents <c>)
+    -->
+    (<j> ^contents <v>
+         ^contents <c> -)
+}
