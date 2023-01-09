@@ -25,3 +25,34 @@ sp {water-jug*apply*empty
     (<j> ^contents 0
          ^contents <c> -)
 }
+
+#water-jug apply operator record last-operator empty
+#if task is water-jug and the empty op. is selected
+#create an state augmentation "last-operator" with the
+#op.'s name and a copy of it's augmentations
+sp {water-jug*apply*operator*record*last-operator*empty
+    (state <s> ^name water-jug
+               ^operator <o>)
+    (<o> ^name empty
+         ^empty-jug <j>)
+-->
+    (<s> ^last-operator <last-op>)
+    (<last-op> ^name empty
+               ^empty-jug <j>)
+}
+
+#water-jug apply operator remove old last-operator empty
+#if task is water jug and empty is seleceted and last-op
+#does not have the same name and jugs, remove last-op
+sp {water-jug*apply*operator*remove*old*last-operator*empty
+    (state <s> ^name water-jug
+               ^operator <o>
+               ^last-operator <last-op>)
+
+    (<o> ^empty-jug <j>)
+
+    -(<last-op> ^name empty
+                ^empty-jug <j>)
+-->
+    (<s> ^last-operator <last-op> -)
+}

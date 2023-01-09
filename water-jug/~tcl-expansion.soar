@@ -1,10 +1,9 @@
-sp {water-jug*monitor*state
+sp {water-jug*propose*fill
     (state <s> ^name water-jug
-               ^jug <j1> <j2>)
-
-    (<j1> ^volume 3 ^contents <c1>)
-    (<j2> ^volume 5 ^contents <c2>)
--->
-    #crlf to jump line when the state changes
-    (write (crlf) | 3:| <c1> | 5:| <c2>)
+               ^jug <j>)
+    (<j> ^empty > 0)
+    -->
+    (<s> ^operator <o> + =)
+    (<o> ^name fill
+        ^fill-jug <j>)
 }
