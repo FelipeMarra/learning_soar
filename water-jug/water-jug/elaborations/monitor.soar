@@ -38,7 +38,7 @@ sp {water-jug*monitor*operator-application*pour
          ^fill-jug <j2>)
     
     (<j1> ^volume <v1> ^contents <c1>)
-    (<j2> ^volume <v3> ^contents <c2>)
+    (<j2> ^volume <v2> ^contents <c2>)
 -->
-    (write | POUR (| <v1> |: |<c1> |, | <v2> |: | <c2>|)|)
+    (write | POUR (| <v1> |: | <c1> |, | <v2> |: | <c2> |)|)
 }
