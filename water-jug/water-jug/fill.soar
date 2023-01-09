@@ -57,3 +57,20 @@ sp {water-jug*apply*operator*remove*old*last-operator*fill
 -->
     (<s> ^last-operator <last-op> -)
 }
+
+#water-jug select operator avoid inverse fill
+#if task is water jug and last op was empty <j>
+#avoid fill <j>
+sp {water-jug*select*operator*avoid*inverse*fill
+    (state <s> ^name water-jug
+               ^operator <o> +
+               ^last-operator <last-op>)
+
+    (<o> ^name fill
+         ^fill-jug <j>)
+
+    (<last-op> ^name empty
+               ^empty-jug <j>)
+-->
+    (<s> ^operator <o> <)
+}

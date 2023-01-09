@@ -1,4 +1,4 @@
-21
+22
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
@@ -20,7 +20,8 @@ SOAR_ID 17
 ENUMERATION 18 1 pour
 SOAR_ID 19
 SOAR_ID 20
-28
+STRING 21
+29
 0 io 1
 0 jug 9
 0 name 7
@@ -49,3 +50,4 @@ SOAR_ID 20
 19 jug 9
 20 empty-jug 9
 20 fill-jug 9
+20 name 21

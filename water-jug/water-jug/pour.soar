@@ -102,3 +102,20 @@ sp {water-jug*apply*operator*remove*old*last-operator*pour
 -->
     (<s> ^last-operator <last-op> -)
 }
+
+#water-jug select operator avoid inverse pour
+#if task is water jug and last op was pour fom <j1> to <j2>
+#avoid pour from <j2> to <j1>
+sp {water-jug*select*operator*avoid*inverse*pour
+    (state <s> ^name water-jug
+               ^operator <o> +
+               ^last-operator <last-op>)
+
+    (<o> ^name pour
+         ^fill-jug <j>)
+
+    (<last-op> ^name pour
+               ^empty-jug <j>)
+-->
+    (<s> ^operator <o> <)
+}
