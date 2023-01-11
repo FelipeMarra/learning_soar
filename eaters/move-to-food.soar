@@ -1,0 +1,23 @@
+############################ Move-to-food operator ############################
+# Propose*move-to-normal-food:
+# If there is normal food in one of the four directions, then propose the 
+# move-to-food operator in that direction.
+# Indicate this op. can be selected randomly
+
+
+# Propose*move-to-bonus-food:
+# If there is bonus food in one of the four directions, then propose the 
+# move-to-food operator in that direction.
+# Indicate this op. can be selected randomly
+
+
+# Apply*move-to-food:
+# If the move-to-food operator is selected to a direction,
+# generate an output command to move to that direction.
+
+
+# Apply*move-to-food*remove-move:
+# If the move-to-food operator is selected,
+# and there is a completed move-to-food command on the output link,
+# then remove that command.
+
