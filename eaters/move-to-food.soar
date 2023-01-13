@@ -1,23 +1,45 @@
 ############################ Move-to-food operator ############################
-# Propose*move-to-normal-food:
-# If there is normal food in one of the four directions, then propose the 
+# Propose*move-to-food:
+# If there is food in one of the four directions, then propose the 
 # move-to-food operator in that direction.
 # Indicate this op. can be selected randomly
-
-
-# Propose*move-to-bonus-food:
-# If there is bonus food in one of the four directions, then propose the 
-# move-to-food operator in that direction.
-# Indicate this op. can be selected randomly
-
+sp {propose*move-to-food
+    (state <s> ^io.input-link.my-location.<direction>.content 
+                                                    << normalfood bonusfood >>)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name move-to-food
+         ^direction <direction>)
+}
 
 # Apply*move-to-food:
 # If the move-to-food operator is selected to a direction,
 # generate an output command to move to that direction.
-
+sp {apply*move-to-food
+    (state <s> ^io.output-link <out>
+               ^operator (^name move-to-food
+                          ^direction <direction>))
+-->
+    (<out> ^move.direction <direction>)
+}
 
 # Apply*move-to-food*remove-move:
 # If the move-to-food operator is selected,
 # and there is a completed move-to-food command on the output link,
 # then remove that command.
+sp {apply*move-to-food*remove-move
+    (state <s>  ^operator.name move-to-food
+                ^io.output-link <out>)
+    (<out> ^move <move>)
+    (<move> ^status complete)
+-->
+    (<out> ^move <move> -)
+}
 
+# Monitor move-to-food
+sp {monitor*move-to-food
+    (state <s> ^operator (^name move-to-food
+                          ^direction <direction>))
+-->
+    (write |Moving To Direction |<direction>||)
+}
