@@ -1,0 +1,97 @@
+########### Generalized Move Operator ###################
+#################### PROPOSE ############################
+# Propose*move:
+# If there is ni wall in an adjacent cell, propose move in 
+# the direction of that cell and indicate that this operator 
+# can be selected randomly.
+sp {propose*move
+    (state <s> ^io.input-link.my-location.<dir>.content
+                                  { <content> <> wall })
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name move
+         ^direction <dir>
+         ^content <content>)
+}
+
+#################### SELECT ############################
+#Would be better to just do like:
+# bonus is better
+# << empty eater >> are worst
+# the normal food would became the 2nd option automatically
+#but I'm just following the tutorial here
+
+# Select*move*bonusfood-better-than-normalfood
+# If there is a proposed operator to move to a cell with bonusfood
+# and there is a second proposed operator to move to a cell that 
+# is empty or has normalfood or another eater
+# prefer the first operator.
+sp {select*move*bonusfood-better-than-normalfood
+    (state <s> ^operator <o1> +
+                         <o2> +)
+    (<o1> ^name move
+          ^content bonusfood)
+
+    (<o2> ^name move
+          ^content << normalfood eater empty >>)
+-->
+    (<s> ^operator <o1> > <o2>)
+}
+
+# Select*move*avoid-empty-eater
+# If there is a proposed operator to move to an empty cell or a cell with
+# another eater,
+# then avoid that operator.
+sp {select*move*avoid-empty-eater
+    (state <s> ^operator <o>)
+    (<o> ^name move
+         ^content << eater empty >>)
+-->
+    (<s> ^operator <o> <)
+}
+
+# Select*move*prefer-normalfood
+# If there is a proposed operator to move to a cell with normalfood,
+# prefer that operator.
+sp {select*move*prefer-normalfood
+    (state <s> ^operator <o> +)
+    (<o> ^name move
+         ^content normalfood)
+-->
+    (<s> ^operator <o> >)
+}
+#################### APPLY ############################
+# Apply*move:
+# If the move operator is selected to a direction,
+# generate an output command to move to that direction.
+sp {apply*move
+    (state <s> ^io.output-link <out>
+               ^operator (^name move
+                          ^direction <direction>))
+-->
+    (<out> ^move.direction <direction>)
+}
+
+# Apply*move*remove-move:
+# If the move operator is selected,
+# and there is a completed move command on the output link,
+# then remove that command.
+sp {apply*move*remove-move
+    (state <s>  ^operator.name move
+                ^io.output-link <out>)
+    (<out> ^move <direction>)
+    (<direction> ^status complete)
+-->
+    (<out> ^move <direction> -)
+}
+
+#################### MONITOR ############################
+# Monitor move
+sp {monitor*move
+    (state <s> ^operator (^name move
+                          ^direction <direction>
+                          ^content <content>))
+-->
+    (write |Moving To Direction |<direction>| To Get |<content>||)
+}
+
