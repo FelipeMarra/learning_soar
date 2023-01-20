@@ -1,12 +1,45 @@
-########### Generalized Move Operator ###################
+########### Adavanced Move Operator #####################
+#################### INITIALIZE #########################
+sp {initialize*state*directions
+    (state <state> ^type state)
+-->
+    (<state> ^directions <n> <e> <s> <w>)
+    (<n> ^value north ^opposite south)
+    (<e> ^value east ^opposite west)
+    (<s> ^value south ^opposite north)
+    (<w> ^value west ^opposite east)
+}
+
 #################### PROPOSE ############################
 # Propose*move:
 # If there is no wall in an adjacent cell, propose move in 
 # the direction of that cell and indicate that this operator 
 # can be selected randomly.
-sp {propose*move
+# sp {propose*move
+#     (state <s> ^io.input-link.my-location.<dir>.content
+#                                   { <content> <> wall })
+# -->
+#     (<s> ^operator <o> + =)
+#     (<o> ^name move
+#          ^direction <dir>
+#          ^content <content>)
+# }
+
+# Propose*move*no-backward:
+# If there is normalfood, bonusfood, eater, or empty in an
+# adjacent cell, and there is no last direction equal to 
+# the opposite direction for that cell,
+# propose move in the direction of that cell, with the cell’s 
+# content, and indicate that this operator can be selected 
+# randomly.
+sp {propose*move*no-backward
     (state <s> ^io.input-link.my-location.<dir>.content
-                                  { <content> <> wall })
+                                  { <content> <> wall }
+               ^directions <directions>
+               -^last-direction <last-dir>)
+
+    (<directions> ^value <dir>
+                  ^opposite <last-dir>)
 -->
     (<s> ^operator <o> + =)
     (<o> ^name move
@@ -60,6 +93,25 @@ sp {select*move*prefer-normalfood
 -->
     (<s> ^operator <o> >)
 }
+
+# Select*move*reject*backward
+# If there is a proposed operator to move in the direction
+# opposite the last move,
+# reject that operator.
+sp {select*move*reject*backward
+    (state <s> ^operator <o> +
+               ^directions <directions>
+               ^last-direction <last-dir>)
+
+    (<o> ^name move
+         ^direction <direction>)
+
+    (<directions> ^value <direction>
+                  ^opposite <last-dir>)
+-->
+    (<s> ^operator <o> -)
+}
+
 #################### APPLY ############################
 # Apply*move:
 # If the move operator is selected to a direction,
@@ -85,6 +137,29 @@ sp {apply*move*remove-move
     (<out> ^move <direction> -)
 }
 
+#============= Last Move ===============================
+# Apply*move*last-move
+# If the move operator is selected, store the current
+# move as the value of the last move attr
+sp {apply*move*last-move
+    (state <s> ^operator (^name move
+                          ^direction <direction>))
+-->
+    (<s> ^last-direction <direction>)
+}
+
+# Apply*move*remove*last-move
+# If the move operator is selected, and there is a last
+# direction different from the current direction,
+# remove that last direction from the WM
+sp {apply*move*remove*last-move
+    (state <s>  ^last-direction <last-dir>
+                ^operator (^name move
+                          ^direction {<direction> <> <last-dir>}))
+-->
+    (<s> ^last-direction <last-dir> -)
+}
+
 #################### MONITOR ############################
 # Monitor move
 sp {monitor*move
@@ -94,4 +169,3 @@ sp {monitor*move
 -->
     (write |Moving To Direction |<direction>| To Get |<content>||)
 }
-
