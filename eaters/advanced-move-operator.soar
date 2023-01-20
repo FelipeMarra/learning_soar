@@ -94,23 +94,23 @@ sp {select*move*prefer-normalfood
     (<s> ^operator <o> >)
 }
 
-# Select*move*reject*backward
-# If there is a proposed operator to move in the direction
-# opposite the last move,
-# reject that operator.
-sp {select*move*reject*backward
-    (state <s> ^operator <o> +
-               ^directions <directions>
-               ^last-direction <last-dir>)
+# # Select*move*reject*backward
+# # If there is a proposed operator to move in the direction
+# # opposite the last move,
+# # reject that operator.
+# sp {select*move*reject*backward
+#     (state <s> ^operator <o> +
+#                ^directions <directions>
+#                ^last-direction <last-dir>)
 
-    (<o> ^name move
-         ^direction <direction>)
+#     (<o> ^name move
+#          ^direction <direction>)
 
-    (<directions> ^value <direction>
-                  ^opposite <last-dir>)
--->
-    (<s> ^operator <o> -)
-}
+#     (<directions> ^value <direction>
+#                   ^opposite <last-dir>)
+# -->
+#     (<s> ^operator <o> -)
+# }
 
 #################### APPLY ############################
 # Apply*move:
