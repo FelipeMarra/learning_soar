@@ -1,0 +1,205 @@
+#Eaters Top-state Structure
+# ^io
+#     ^input-link
+#         ^eater
+#             ^direction east/north/south/west
+#             ^name red/blue/yellow/green/purple/black
+#             ^score 0-1000
+#             ^x 1-15
+#             ^y 1-15
+#         ^my-location
+#             ^content bonusfood/normalfood/eater/empty/wall
+#             ^east
+#                 ^content bonusfood/normalfood/eater/empty/wall
+#                 ...
+#             ^north
+#                 ^content bonusfood/normalfood/eater/empty/wall
+#                 ...
+#             ^south
+#                 ^content bonusfood/normalfood/eater/empty/wall
+#                 ...
+#             ^west
+#                 ^content bonusfood/normalfood/eater/empty/wall
+#                 ...
+#     ^output-link
+#         ^move
+#             ^direction east/north/south/west
+#             ^status complete - created by Soar as feedback
+#         ^jump
+#             ^direction east/north/south/west
+#             ^status complete - created by Soar as feedback
+# ^superstate nil
+# ^type state
+
+########### Move & Jump Operator #####################
+#################### INITIALIZE #########################
+sp {initialize*state*directions
+    (state <state> ^type state)
+-->
+    (<state> ^directions <n> <e> <s> <w>)
+    (<n> ^value north ^opposite south)
+    (<e> ^value east ^opposite west)
+    (<s> ^value south ^opposite north)
+    (<w> ^value west ^opposite east)
+}
+
+# ==========Reward Table for Op. Selection ============
+sp {init*elaborate*name-content-value
+(state <s> ^type state)
+-->
+    (<s> ^name-content-value <c1> <c2> <c3> <c4>
+                             <c5> <c6> <c7> <c8>)
+    (<c1> ^name move ^content empty ^value 0)
+    (<c2> ^name move ^content eater ^value 0)
+    (<c3> ^name move ^content normalfood ^value 5)
+    (<c4> ^name move ^content bonusfood ^value 10)
+    (<c5> ^name jump ^content empty ^value -5)
+    (<c6> ^name jump ^content eater ^value -5)
+    (<c7> ^name jump ^content normalfood ^value 0)
+    (<c8> ^name jump ^content bonusfood ^value 5)
+}
+
+#################### PROPOSE ############################
+# Propose*jump:
+# If the content of a cell two steps away in a direction is not 
+# a wall, propose jump in the direction of that cell, with the 
+# cell’s content, and indicate that this operator can be 
+# selected randomly.
+# sp {propose*jump
+#     (state <s> ^io.input-link.my-location.<dir>.<dir>.content
+#                                   { <content> <> wall })
+# -->
+#     (<s> ^operator <o> + =)
+#     (<o> ^name jump
+#          ^direction <dir>
+#          ^content <content>)
+# }
+sp {propose*jump
+    (state <s> ^io.input-link.my-location.<dir>.<dir>.content
+                                  { <content> <> wall })
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name jump
+         ^actions.jump.direction <dir>
+         ^content <content>)
+}
+
+# Propose*move*no-backward:
+# If there is normalfood, bonusfood, eater, or empty in an
+# adjacent cell, and there is no last direction equal to 
+# the opposite direction for that cell,
+# propose move in the direction of that cell, with the cell’s 
+# content, and indicate that this operator can be selected 
+# randomly.
+# TODO: Uncoment
+# sp {propose*move*no-backward
+#     (state <s> ^io.input-link.my-location.<dir>.content
+#                                   { <content> <> wall }
+#                ^directions <directions>
+#                -^last-direction <last-dir>)
+
+#     (<directions> ^value <dir>
+#                   ^opposite <last-dir>)
+# -->
+#     (<s> ^operator <o> + =)
+#     (<o> ^name move
+#          ^actions.jump.direction <dir>
+#          ^content <content>)
+# }
+
+#################### ELABORATE ###########################
+# ========= Reward Table Based Selection =============
+# Copy the action value into the operator
+sp {elaborate*operator*value
+    (state <s> ^operator <o> +
+               ^name-content-value <ncv>)
+
+    (<o> ^name <name> ^content <content>)
+
+    (<ncv> ^name <name> ^content <content> ^value <value>)
+-->
+    (<o> ^value <value>)
+}
+
+#################### SELECT ############################
+# # Select Bonusfood Better Than Normalfood Empty Eater
+# sp {select*bonusfood-better-than-normalfood-empty-eater
+#     (state <s> ^operator <o1> +
+#                ^operator <o2> +)
+#     (<o1> ^name { <name> << jump move >>}
+#           ^content bonusfood)
+#     (<o2> ^name name
+#           ^content << normalfood empty eater >>)
+# -->
+#     (<s> ^operator <o1> > <o2>)
+# }
+
+# # Select Jump Bonusfood Better Than Move Empty
+# sp {select*jump*bonusfood-better-than*move*empty
+#     (state <s> ^operator <o1> +
+#                ^operator <o2> +)
+#     (<o1> ^name jump
+#           ^content bonusfood)
+#     (<o2> ^name move
+#           ^content empty)
+# -->
+#     (<s> ^operator <o1> > <o2>)
+# }
+
+# ========= Reward Table Based Selection =============
+# Select the greatest value
+sp {select*compare*best*value
+    (state <s> ^operator <o1> +
+               ^operator <o2> +)
+    (<o1> ^value <v>)
+    (<o2> ^value < <v>)
+-->
+    (<s> ^operator <o1> > <o2>)
+}
+
+#################### APPLY ############################
+# Apply*move*jump
+# If the move or jump operator for a direction is selected,
+# generate an output name to move in that direction.
+# sp {apply*move*jump
+#     (state <s> ^io.output-link <out>
+#                ^operator <o>)
+
+#     (<o> ^name {<o-name> << move jump >>}
+#          ^direction <direction>)
+# -->
+#     (<out> ^<o-name>.direction <direction>)
+# }
+
+# Apply*move*jump*remove-name:
+# If the move or jump operator is selected,
+# and there is a completed action (<o-name>) on the output link,
+# then remove that name.
+# sp {apply*move*jump*remove-name
+#     (state <s>  ^operator.name <o-name>
+#                 ^io.output-link <out>)
+
+#     (<out> ^<o-name> <direction>)
+
+#     (<direction> ^status complete)
+# -->
+#     (<out> ^<o-name> <direction> -)
+# }
+
+#============== CMD Copier ======================
+sp {apply*operator*create-action-cmd
+    (state <s> ^operator.actions.<attr> <value>
+               ^io.output-link <out>)
+-->
+    (<out> ^<attr> <value>)
+}
+
+#========= CMD Garbage Collector=================
+sp {apply*operator*remove-cmd
+    (state <s> ^operator.actions
+               ^io.output-link <out>)
+    (<out> ^<attr> <value>)
+    (<value> ^status complete)
+-->
+    (<out> ^<attr> <value> -)
+}
