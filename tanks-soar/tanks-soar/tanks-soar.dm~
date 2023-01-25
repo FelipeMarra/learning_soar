@@ -58,7 +58,7 @@ ENUMERATION 55 1 turn
 SOAR_ID 56
 ENUMERATION 57 1 initialize-tanks-soar
 SOAR_ID 58
-ENUMERATION 59 1 radar-off
+ENUMERATION 59 1 radar
 78
 0 io 1
 0 operator 44

@@ -5,4 +5,7 @@ popd
 pushd elaborations
 source elaborations_source.soar
 popd
-source initialize-tanksoar-default.soar
+source initialize-tanks-soar.soar
+source move.soar
+source radar.soar
+source turn.soar
