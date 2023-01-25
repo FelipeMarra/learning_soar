@@ -7,8 +7,8 @@ VERSION 4
 4	0	FOLDER elaborations elaborations 5
 5	4	FOPERATOR _all _all.soar 6
 6	4	FOPERATOR top-state top-state.soar 7
-7	0	OPERATOR initialize-tanks-soar initialize-tanks-soar.soar 11
+7	0	OPERATOR initialize-tanks-soar initialize-tanks-soar.soar 8
 8	0	OPERATOR move move.soar 9
-9	0	OPERATOR radar radar.soar 12
-10	0	OPERATOR turn turn.soar 10
+9	0	OPERATOR radar radar.soar 10
+10	0	OPERATOR turn turn.soar 11
 END
