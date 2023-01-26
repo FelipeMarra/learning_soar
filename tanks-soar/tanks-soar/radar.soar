@@ -5,7 +5,7 @@
 # If the radar is on but no energy, health, missiles and
 #  tanks visible, then propose the radar-off operator
 sp {tanks-soar*propose*radar-off
-    (state <s> ^name tanks-soar
+    (state <s> ^type state
                ^io.input-link <input-link>)
     (<input-link> ^radar-status on
                  -^radar.<< energy health missiles tank >>)

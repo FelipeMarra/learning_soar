@@ -5,7 +5,9 @@ popd
 pushd elaborations
 source elaborations_source.soar
 popd
+source wander.soar
+pushd wander
+source wander_source.soar
+popd
 source initialize-tanks-soar.soar
-source move.soar
 source radar.soar
-source turn.soar

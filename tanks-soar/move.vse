@@ -1,11 +1,32 @@
-62
+VERSION 2
+IMPORT_TYPE 4
+LAYOUT 1
+-1	OPERATOR move
+RULES
+RULE_FILE 0 13
+#################### Move Operator ##########################
+
+#### Proposal
+# If the task is tanksoar and the tank is not blocked in the
+# forward direction, propose the move operator.
+sp {tanks-soar*propose*move
+    (state <s>  ^name tanks-soar
+                ^io.input-link.blocked.forward no)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name move
+         ^actions.move.direction forward)
+}
+
+DATAMAP
+64
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
 SOAR_ID 3
 ENUMERATION 4 1 state
 ENUMERATION 5 1 nil
-ENUMERATION 6 2 tanks-soar wander
+ENUMERATION 6 1 tanks-soar
 SOAR_ID 7
 SOAR_ID 8
 SOAR_ID 9
@@ -52,16 +73,18 @@ SOAR_ID 49
 ENUMERATION 50 3 center left right
 INTEGER_RANGE 51 0 13
 SOAR_ID 52
-ENUMERATION 53 1 initialize-tanks-soar
+ENUMERATION 53 1 move
 SOAR_ID 54
-ENUMERATION 55 1 radar-off
+ENUMERATION 55 1 turn
 SOAR_ID 56
-ENUMERATION 57 1 wander
-ENUMERATION 58 1 turn
-SOAR_ID 59
-ENUMERATION 60 1 move
-SOAR_ID 61
-80
+ENUMERATION 57 1 initialize-tanks-soar
+SOAR_ID 58
+ENUMERATION 59 1 radar-off
+SOAR_ID 60
+ENUMERATION 61 1 wander
+ENUMERATION 62 1 a
+SOAR_ID 63
+82
 0 io 1
 0 operator 44
 0 superstate 5
@@ -70,9 +93,10 @@ SOAR_ID 61
 0 operator 52
 0 operator 54
 0 operator 56
-0 operator 59
-0 operator 61
 0 name 6
+0 operator 58
+0 operator 60
+0 operator 63
 1 input-link 2
 1 output-link 3
 2 blocked 19
@@ -140,5 +164,6 @@ SOAR_ID 61
 52 name 53
 54 name 55
 56 name 57
-59 name 58
-61 name 60
+58 name 59
+60 name 61
+63 name 62

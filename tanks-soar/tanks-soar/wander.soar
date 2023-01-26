@@ -1,0 +1,11 @@
+#################### Wander Operator ##########################
+sp {propose*wander
+    (state <s> ^name tanks-soar
+               ^io.input-link <io>)
+    (<io> ^sound silent
+         -^radar.tank
+         -^incoming.<dir> yes)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name wander)
+}
