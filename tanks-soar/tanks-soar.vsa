@@ -10,6 +10,10 @@ VERSION 4
 7	0	HLFOPERATOR wander wander.soar wander 0 8
 8	7	OPERATOR move move.soar 9
 9	7	OPERATOR turn turn.soar 10
-10	0	OPERATOR initialize-tanks-soar initialize-tanks-soar.soar 11
-11	0	OPERATOR radar radar.soar 12
+10	0	HLOPERATOR chase chase.soar chase 64 11
+11	10	FOPERATOR elaborations elaborations.soar 12
+12	10	OPERATOR move move.soar 13
+13	10	OPERATOR turn turn.soar 14
+14	0	OPERATOR initialize-tanks-soar initialize-tanks-soar.soar 15
+15	0	OPERATOR radar radar.soar 16
 END

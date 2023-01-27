@@ -3,7 +3,7 @@
 #### Proposal
 ## Radar-off Operator Proposal
 # If the radar is on but no energy, health, missiles and
-#  tanks visible, then propose the radar-off operator
+# tanks visible, then propose the radar-off operator
 sp {tanks-soar*propose*radar-off
     (state <s> ^type state
                ^io.input-link <input-link>)

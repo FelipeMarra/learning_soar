@@ -1,5 +1,31 @@
+############### General #####################
 sp {elaborate*top-state*top-state
   (state <s> ^name tanks-soar)
 -->
   (<s> ^top-state <s>)
+}
+
+############## Input Link ###################
+# Energy low 
+sp {elaborate*state*energy-low
+    (state <s> ^name tanks-soar
+               ^io.input-link.energy <= 200)
+-->
+    (<s> ^status.energy low)
+}
+
+# Missiles low
+sp {elaborate*state*missiles-low
+    (state <s> ^name tanks-soar
+               ^io.input-link.missiles 0)
+-->
+    (<s> ^status.missiles low)
+}
+
+# Copy Sound Direction
+sp {chase*elaborate*sound-direction
+    (state <s> ^name chase
+               ^io.input-link.sound <direction>)
+-->
+    (<s> ^status.sound-direction <direction>)
 }
