@@ -5,7 +5,7 @@ SOAR_ID 2
 SOAR_ID 3
 ENUMERATION 4 1 state
 ENUMERATION 5 1 nil
-ENUMERATION 6 1 tanks-soar
+ENUMERATION 6 3 tanks-soar wander chase
 SOAR_ID 7
 SOAR_ID 8
 SOAR_ID 9

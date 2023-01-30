@@ -6,3 +6,13 @@ sp {chase*elaborate*sound-direction
 -->
     (<s> ^status.sound-direction <direction>)
 }
+
+# Radar
+sp {chase*elaborate*radar
+    (state <s> ^name chase
+               ^operator.actions <actions>
+               ^io.input-link.radar-status off)
+-->
+    (<actions> ^radar.switch on
+         ^radar-power.setting 13)
+}
