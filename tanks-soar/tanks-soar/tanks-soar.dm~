@@ -1,4 +1,4 @@
-90
+89
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
@@ -76,20 +76,19 @@ SOAR_ID 73
 ENUMERATION 74 1 attack-slide
 SOAR_ID 75
 SOAR_ID 76
-SOAR_ID 77
-ENUMERATION 78 1 attack
-SOAR_ID 79
-ENUMERATION 80 1 move
-SOAR_ID 81
-ENUMERATION 82 1 turn
-SOAR_ID 83
-ENUMERATION 84 1 fire-missile
-SOAR_ID 85
-ENUMERATION 86 1 slide
-SOAR_ID 87
-ENUMERATION 88 1 move-forward
-ENUMERATION 89 4 left right backward forward
-108
+ENUMERATION 77 1 attack
+SOAR_ID 78
+ENUMERATION 79 1 move
+SOAR_ID 80
+ENUMERATION 81 1 turn
+SOAR_ID 82
+ENUMERATION 83 1 fire-missile
+SOAR_ID 84
+ENUMERATION 85 1 slide
+SOAR_ID 86
+ENUMERATION 87 1 move-forward
+ENUMERATION 88 4 left right backward forward
+107
 0 io 1
 0 operator 44
 0 superstate 5
@@ -107,14 +106,13 @@ ENUMERATION 89 4 left right backward forward
 0 operator 73
 0 operator 75
 0 name 6
-0 attack 76
-0 operator 77
-0 operator 79
-0 operator 81
-0 operator 83
-0 operator 85
-0 operator 87
-0 sound-direction 89
+0 operator 76
+0 operator 78
+0 operator 80
+0 operator 82
+0 operator 84
+0 operator 86
+0 sound-direction 88
 1 input-link 2
 1 output-link 3
 2 blocked 19
@@ -192,9 +190,9 @@ ENUMERATION 89 4 left right backward forward
 71 name 70
 73 name 72
 75 name 74
-77 name 78
-79 name 80
-81 name 82
-83 name 84
-85 name 86
-87 name 88
+76 name 77
+78 name 79
+80 name 81
+82 name 83
+84 name 85
+86 name 87
