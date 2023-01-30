@@ -1,0 +1,8 @@
+############## Chase ###################
+# Copy Sound Direction
+sp {chase*elaborate*sound-direction
+    (state <s> ^name chase
+               ^io.input-link.sound <direction>)
+-->
+    (<s> ^status.sound-direction <direction>)
+}
