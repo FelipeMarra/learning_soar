@@ -1,0 +1,35 @@
+#################### Attack Fire Operator ##########################
+
+##Propose Missile
+# If the state is attack and there is a tank on radar in 
+#the center, then propose the fire missile operator.
+sp {attack*propose*fire-missile
+    (state <s> ^name attack
+               ^io.input-link <input>)
+
+    (<input> ^radar.tank.position center
+                  ^missiles > 0)
+ -->
+    (<s> ^operator <o> + >)
+    (<o> ^name fire-missile
+         ^actions.fire.weapon missile)
+}
+
+##Propose Slide
+# If the state is attack and there is a tank on radar that
+# is not in the center, and there is not a tank in the
+# center, and there is an open spot in the direction of the
+# tank, then propose the slide operator in the
+# direction of the tank.
+sp {attack*propose*slide
+    (state <s> ^name attack
+               ^io.input-link <input>)
+    (<input> ^blocked.<direction> no
+             ^radar <radar>)
+    (<radar> ^tank.position { << left right >> <direction> }
+        -^tank.position center)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name slide
+         ^actions.move.direction <direction>)
+}

@@ -7,13 +7,18 @@ VERSION 4
 4	0	FOLDER elaborations elaborations 5
 5	4	FOPERATOR _all _all.soar 6
 6	4	FOPERATOR top-state top-state.soar 7
-7	0	HLFOPERATOR chase chase.soar chase 0 8
-8	7	FOPERATOR elaborations elaborations.soar 9
-9	7	OPERATOR move move.soar 10
-10	7	OPERATOR turn turn.soar 11
-11	0	HLFOPERATOR wander wander.soar wander 0 12
-12	11	OPERATOR move move.soar 13
-13	11	OPERATOR turn turn.soar 14
-14	0	OPERATOR initialize-tanks-soar initialize-tanks-soar.soar 15
-15	0	OPERATOR radar radar.soar 16
+7	0	HLFOPERATOR attack attack.soar attack 0 8
+8	7	OPERATOR attack-fire attack-fire.soar 9
+9	7	OPERATOR attack-move attack-move.soar 10
+10	7	OPERATOR attack-slide attack-slide.soar 11
+11	7	OPERATOR attack-turn attack-turn.soar 12
+12	0	HLFOPERATOR chase chase.soar chase 0 13
+13	12	FOPERATOR chase-elaborations chase-elaborations.soar 14
+14	12	OPERATOR chase-move chase-move.soar 15
+15	12	OPERATOR chase-turn chase-turn.soar 16
+16	0	HLFOPERATOR wander wander.soar wander 0 17
+17	16	OPERATOR wander-move wander-move.soar 18
+18	16	OPERATOR wander-turn wander-turn.soar 19
+19	0	OPERATOR initialize-tanks-soar initialize-tanks-soar.soar 20
+20	0	OPERATOR radar radar.soar 21
 END

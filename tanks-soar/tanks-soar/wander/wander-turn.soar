@@ -20,6 +20,7 @@ sp {wander*propose*turn
                ^radar.switch on
                ^radar-power.setting 13)
 }
+
 # If the tank is blocked in the forward direction, and in 
 # both the right or left directions, then propose the turn 
 # operator left.

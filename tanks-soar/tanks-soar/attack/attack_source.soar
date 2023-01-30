@@ -1,0 +1,4 @@
+source attack-fire.soar
+source attack-move.soar
+source attack-slide.soar
+source attack-turn.soar

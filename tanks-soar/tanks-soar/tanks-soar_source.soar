@@ -5,6 +5,10 @@ popd
 pushd elaborations
 source elaborations_source.soar
 popd
+source attack.soar
+pushd attack
+source attack_source.soar
+popd
 source chase.soar
 pushd chase
 source chase_source.soar
