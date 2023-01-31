@@ -8,10 +8,13 @@
 sp {attack*propose*move-forward
     (state <s> ^name attack
                ^io.input-link <input>)
+
     (<input> ^blocked.<direction> yes
              ^radar <radar>)
+
     (<radar> ^tank <tank>
             -^tank.position center)
+
     (<tank> ^position { << left right >> <direction> }
          ^distance <> 0)
 -->

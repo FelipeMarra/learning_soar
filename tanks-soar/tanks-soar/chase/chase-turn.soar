@@ -5,7 +5,7 @@
 # from left or right, turn that direction.
 sp {chase*propose*turn
     (state <s> ^name chase
-               ^sound-direction {<< left right >> <direction>})
+               ^status.sound-direction {<< left right >> <direction>})
 -->
     (<s> ^operator <o> + =)
     (<o> ^name turn
@@ -17,7 +17,7 @@ sp {chase*propose*turn
 # from backward, turn left.
 sp {chase*propose*backward
     (state <s> ^name chase
-               ^sound-direction backward)
+               ^status.sound-direction backward)
 -->
     (<s> ^operator <o> +)
     (<o> ^name turn

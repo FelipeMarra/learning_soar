@@ -7,6 +7,7 @@
 sp {attack*propose*turn
     (state <s> ^name attack
                ^io.input-link.radar.tank <tank>)
+
     (<tank> ^distance 0
             ^position { << left right >> <direction> })
 -->

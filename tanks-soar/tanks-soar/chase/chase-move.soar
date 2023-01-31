@@ -5,7 +5,7 @@
 # from the forward position, propose move forward.
 sp {chase*operator*move
     (state <s> ^name chase
-               ^sound-direction forward
+               ^status.sound-direction forward
                ^io.input-link.blocked.forward no)
 -->
     (<s> ^operator <o> +)

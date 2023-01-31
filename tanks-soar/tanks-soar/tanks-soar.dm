@@ -1,11 +1,11 @@
-80
+89
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
 SOAR_ID 3
 ENUMERATION 4 1 state
 ENUMERATION 5 1 nil
-ENUMERATION 6 3 tanks-soar wander chase
+ENUMERATION 6 4 tanks-soar wander chase attack
 SOAR_ID 7
 SOAR_ID 8
 SOAR_ID 9
@@ -67,19 +67,28 @@ SOAR_ID 64
 STRING 65
 STRING 66
 ENUMERATION 67 5 backward forward left right silent
-ENUMERATION 68 1 atack-move
+ENUMERATION 68 1 attack-move
 SOAR_ID 69
-ENUMERATION 70 1 atack-turn
+ENUMERATION 70 1 attack-turn
 SOAR_ID 71
-ENUMERATION 72 1 attack-move
+ENUMERATION 72 1 attack-fire
 SOAR_ID 73
-ENUMERATION 74 1 attack-turn
+ENUMERATION 74 1 attack-slide
 SOAR_ID 75
-ENUMERATION 76 1 attack-fire
-SOAR_ID 77
-ENUMERATION 78 1 attack-slide
-SOAR_ID 79
-98
+SOAR_ID 76
+ENUMERATION 77 1 attack
+SOAR_ID 78
+ENUMERATION 79 1 move
+SOAR_ID 80
+ENUMERATION 81 1 turn
+SOAR_ID 82
+ENUMERATION 83 1 fire-missile
+SOAR_ID 84
+ENUMERATION 85 1 slide
+SOAR_ID 86
+ENUMERATION 87 1 move-forward
+ENUMERATION 88 4 left right backward forward
+107
 0 io 1
 0 operator 44
 0 superstate 5
@@ -92,13 +101,18 @@ SOAR_ID 79
 0 operator 61
 0 operator 62
 0 status 64
-0 name 6
 0 operator 69
 0 operator 71
 0 operator 73
 0 operator 75
-0 operator 77
-0 operator 79
+0 name 6
+0 operator 76
+0 operator 78
+0 operator 80
+0 operator 82
+0 operator 84
+0 operator 86
+0 sound-direction 88
 1 input-link 2
 1 output-link 3
 2 blocked 19
@@ -176,5 +190,9 @@ SOAR_ID 79
 71 name 70
 73 name 72
 75 name 74
-77 name 76
-79 name 78
+76 name 77
+78 name 79
+80 name 81
+82 name 83
+84 name 85
+86 name 87
