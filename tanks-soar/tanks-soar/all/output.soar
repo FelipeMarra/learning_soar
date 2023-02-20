@@ -1,4 +1,3 @@
-
 sp {apply*operator*create-action-command
    (state <s> ^operator <o>
               ^io.output-link <ol>)
