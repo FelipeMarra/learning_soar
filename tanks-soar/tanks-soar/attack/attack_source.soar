@@ -1,4 +1,5 @@
-source attack-fire.soar
-source attack-move.soar
-source attack-slide.soar
-source attack-turn.soar
+source elaborations.soar
+source fire-missile.soar
+source move.soar
+source slide.soar
+source turn.soar

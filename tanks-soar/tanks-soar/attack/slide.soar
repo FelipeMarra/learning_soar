@@ -14,7 +14,7 @@ sp {attack*propose*slide
              ^radar <radar>)
 
     (<radar> ^tank.position { << left right >> <direction> }
-        -^tank.position center)
+            -^tank.position center)
 -->
     (<s> ^operator <o> + =)
     (<o> ^name slide

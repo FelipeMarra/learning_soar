@@ -16,7 +16,7 @@ sp {attack*propose*move-forward
             -^tank.position center)
 
     (<tank> ^position { << left right >> <direction> }
-         ^distance <> 0)
+            ^distance <> 0)
 -->
     (<s> ^operator <o> + =)
     (<o> ^name move-forward

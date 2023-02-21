@@ -13,9 +13,8 @@ source chase.soar
 pushd chase
 source chase_source.soar
 popd
+source initialize-tanks-soar.soar
 source wander.soar
 pushd wander
 source wander_source.soar
 popd
-source initialize-tanks-soar.soar
-source radar.soar

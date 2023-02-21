@@ -1,2 +1,3 @@
-source wander-move.soar
-source wander-turn.soar
+source elaborations.soar
+source move.soar
+source turn.soar

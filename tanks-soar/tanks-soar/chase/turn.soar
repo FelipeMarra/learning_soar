@@ -2,7 +2,7 @@
 
 #### Proposal
 ## If the state is named chase and the sound is coming 
-# from left or right, turn that direction.
+## from left or right, turn that direction.
 sp {chase*propose*turn
     (state <s> ^name chase
                ^status.sound-direction {<< left right >> <direction>})
@@ -14,7 +14,7 @@ sp {chase*propose*turn
 
 ## Propose Backward
 ## If the state is named chase and the sound is coming 
-# from backward, turn left.
+## from backward, turn left.
 sp {chase*propose*backward
     (state <s> ^name chase
                ^status.sound-direction backward)
