@@ -1,4 +1,4 @@
-165
+272
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
@@ -164,7 +164,114 @@ ENUMERATION 161 4 forward backward left right
 ENUMERATION 162 4 forward backward left right
 ENUMERATION 163 4 forward backward left right
 ENUMERATION 164 4 forward backward left right
-187
+SOAR_ID 165
+SOAR_ID 166
+SOAR_ID 167
+SOAR_ID 168
+SOAR_ID 169
+SOAR_ID 170
+SOAR_ID 171
+SOAR_ID 172
+SOAR_ID 173
+SOAR_ID 174
+SOAR_ID 175
+SOAR_ID 176
+SOAR_ID 177
+SOAR_ID 178
+SOAR_ID 179
+SOAR_ID 180
+SOAR_ID 181
+SOAR_ID 182
+SOAR_ID 183
+SOAR_ID 184
+ENUMERATION 185 4 forward left right backward
+SOAR_ID 186
+SOAR_ID 187
+SOAR_ID 188
+SOAR_ID 189
+SOAR_ID 190
+ENUMERATION 191 1 left
+ENUMERATION 192 1 left
+SOAR_ID 193
+SOAR_ID 194
+ENUMERATION 195 1 forward
+SOAR_ID 196
+SOAR_ID 197
+SOAR_ID 198
+SOAR_ID 199
+SOAR_ID 200
+SOAR_ID 201
+SOAR_ID 202
+SOAR_ID 203
+SOAR_ID 204
+SOAR_ID 205
+SOAR_ID 206
+SOAR_ID 207
+SOAR_ID 208
+ENUMERATION 209 2 yes no
+ENUMERATION 210 2 yes no
+ENUMERATION 211 2 yes no
+SOAR_ID 212
+SOAR_ID 213
+SOAR_ID 214
+SOAR_ID 215
+INTEGER_RANGE 216 -2147483648 2147483647
+ENUMERATION 217 1 missile
+ENUMERATION 218 1 missile
+ENUMERATION 219 1 missile
+ENUMERATION 220 1 missile
+INTEGER_RANGE 221 -2147483648 2147483647
+ENUMERATION 222 3 left right center
+SOAR_ID 223
+SOAR_ID 224
+SOAR_ID 225
+SOAR_ID 226
+SOAR_ID 227
+ENUMERATION 228 1 off
+SOAR_ID 229
+SOAR_ID 230
+SOAR_ID 231
+SOAR_ID 232
+ENUMERATION 233 1 no
+ENUMERATION 234 1 forward
+ENUMERATION 235 1 forward
+ENUMERATION 236 1 silent
+SOAR_ID 237
+SOAR_ID 238
+ENUMERATION 239 2 right left
+ENUMERATION 240 2 left right
+ENUMERATION 241 2 forward backward
+ENUMERATION 242 2 backward forward
+SOAR_ID 243
+SOAR_ID 244
+SOAR_ID 245
+SOAR_ID 246
+ENUMERATION 247 1 on
+SOAR_ID 248
+ENUMERATION 249 2 off on
+ENUMERATION 250 2 off on
+ENUMERATION 251 2 off on
+SOAR_ID 252
+SOAR_ID 253
+SOAR_ID 254
+ENUMERATION 255 1 left
+ENUMERATION 256 1 left
+ENUMERATION 257 1 left
+ENUMERATION 258 1 on
+ENUMERATION 259 1 on
+INTEGER_RANGE 260 -2147483648 2147483647
+INTEGER_RANGE 261 -2147483648 2147483647
+ENUMERATION 262 1 forward
+ENUMERATION 263 1 forward
+ENUMERATION 264 1 forward
+SOAR_ID 265
+SOAR_ID 266
+SOAR_ID 267
+SOAR_ID 268
+INTEGER_RANGE 269 -2147483648 2147483647
+INTEGER_RANGE 270 -2147483648 2147483647
+INTEGER_RANGE 271 -2147483648 2147483647
+294
 0 io 1
 0 name 6
 0 operator 44
@@ -264,14 +371,18 @@ ENUMERATION 164 4 forward backward left right
 56 operator 71
 56 operator 73
 56 operator 75
+56 io 200
 63 command 64
 63 present-id 65
 63 result 66
 67 command 68
 67 result 69
 71 name 70
+71 actions 202
 73 name 72
+73 actions 201
 75 name 74
+75 actions 203
 76 direction 77
 76 status 78
 79 status 80
@@ -298,15 +409,20 @@ ENUMERATION 164 4 forward backward left right
 93 operator 110
 93 operator 112
 93 operator 114
+93 io 165
 100 command 101
 100 present-id 102
 100 result 103
 104 command 105
 104 result 106
 108 name 107
+108 actions 169
 110 name 109
+110 actions 166
 112 name 111
+112 actions 167
 114 name 113
+114 actions 168
 115 name 116
 115 actions 47
 117 type 118
@@ -321,13 +437,17 @@ ENUMERATION 164 4 forward backward left right
 117 smem 128
 117 operator 132
 117 operator 134
+117 io 181
+117 sound-direction 185
 124 command 125
 124 present-id 126
 124 result 127
 128 command 129
 128 result 130
 132 name 131
+132 actions 183
 134 name 133
+134 actions 182
 135 name 136
 135 actions 47
 137 type 138
@@ -341,6 +461,10 @@ ENUMERATION 164 4 forward backward left right
 137 epmem 144
 137 smem 148
 137 operator 152
+137 io 193
+137 direction 195
+137 avoid-direction 198
+137 side-direction 199
 144 command 145
 144 present-id 146
 144 result 147
@@ -352,3 +476,93 @@ ENUMERATION 164 4 forward backward left right
 160 backward 164
 160 left 163
 160 right 162
+165 input-link 170
+166 rotate 175
+166 fire 179
+167 rotate 174
+167 fire 178
+168 rotate 176
+168 fire 180
+169 rotate 173
+169 fire 177
+170 blocked 171
+170 radar 172
+170 missiles 216
+172 tank 215
+173 direction 225
+174 direction 226
+175 direction 223
+176 direction 224
+177 weapon 220
+178 weapon 217
+179 weapon 218
+180 weapon 219
+181 input-link 184
+182 move 187
+182 rotate 189
+182 radar 229
+182 radar-power 231
+183 move 188
+183 rotate 190
+183 radar 230
+183 radar-power 232
+184 blocked 186
+184 sound 227
+184 radar-status 228
+186 forward 233
+187 direction 234
+188 direction 235
+189 direction 192
+190 direction 191
+193 input-link 194
+194 incoming 196
+194 radar 197
+194 sound 236
+194 blocked 243
+197 tank 237
+199 forward 239
+199 backward 240
+199 right 241
+199 left 242
+200 input-link 204
+201 radar 205
+201 rotate 212
+201 move 244
+201 radar-power 252
+202 radar 207
+202 rotate 214
+202 move 246
+202 radar-power 254
+203 radar 206
+203 rotate 213
+203 move 245
+203 radar-power 253
+204 blocked 208
+204 radar-status 247
+204 radar 248
+205 switch 249
+206 switch 250
+207 switch 251
+208 forward 209
+208 left 211
+208 right 210
+212 direction 257
+213 direction 255
+214 direction 256
+215 distance 221
+215 position 222
+229 switch 259
+230 switch 258
+231 setting 261
+232 setting 260
+237 position 238
+244 direction 262
+245 direction 263
+246 direction 264
+248 energy 265
+248 health 266
+248 missiles 267
+248 tank 268
+252 setting 269
+253 setting 270
+254 setting 271
