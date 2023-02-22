@@ -8,7 +8,7 @@ sp {attack*propose*fire-missile
                ^io.input-link <input>)
 
     (<input> ^radar.tank.position center
-                  ^missiles > 0)
+             ^missiles > 0)
  -->
     (<s> ^operator <o> + >)
     (<o> ^name fire-missile

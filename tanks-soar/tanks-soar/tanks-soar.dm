@@ -1,4 +1,4 @@
-134
+165
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
@@ -11,276 +11,344 @@ SOAR_ID 8
 SOAR_ID 9
 SOAR_ID 10
 SOAR_ID 11
-ENUMERATION 12 1 complete
-ENUMERATION 13 4 backward forward left right
-ENUMERATION 14 2 off on
-INTEGER_RANGE 15 -2147483648 2147483647
-ENUMERATION 16 2 left right
-SOAR_ID 17
-INTEGER_RANGE 18 -2147483648 2147483647
-ENUMERATION 19 4 east north south west
-ENUMERATION 20 2 no yes
-INTEGER_RANGE 21 -2147483648 2147483647
-INTEGER_RANGE 22 -2147483648 2147483647
-ENUMERATION 23 2 no yes
-ENUMERATION 24 2 no yes
+SOAR_ID 12
+ENUMERATION 13 1 complete
+ENUMERATION 14 1 missile
+ENUMERATION 15 4 backward forward left right
+ENUMERATION 16 2 off on
+INTEGER_RANGE 17 -2147483648 2147483647
+ENUMERATION 18 2 left right
+SOAR_ID 19
+INTEGER_RANGE 20 -2147483648 2147483647
+ENUMERATION 21 4 east north south west
+ENUMERATION 22 2 no yes
+INTEGER_RANGE 23 -2147483648 2147483647
+INTEGER_RANGE 24 -2147483648 2147483647
 ENUMERATION 25 2 no yes
 ENUMERATION 26 2 no yes
 ENUMERATION 27 2 no yes
-INTEGER_RANGE 28 -2147483648 2147483647
-ENUMERATION 29 6 black green orange purple red yellow
+ENUMERATION 28 2 no yes
+ENUMERATION 29 2 no yes
 INTEGER_RANGE 30 -2147483648 2147483647
-INTEGER_RANGE 31 -2147483648 2147483647
-ENUMERATION 32 2 off on
-FLOAT_RANGE 33 -Infinity Infinity
-ENUMERATION 34 2 no yes
-ENUMERATION 35 2 off on
-ENUMERATION 36 5 backward forward left right silent
-INTEGER_RANGE 37 -2147483648 2147483647
-INTEGER_RANGE 38 -2147483648 2147483647
-SOAR_ID 39
-SOAR_ID 40
-INTEGER_RANGE 41 -2147483648 2147483647
+ENUMERATION 31 6 black green orange purple red yellow
+INTEGER_RANGE 32 -2147483648 2147483647
+INTEGER_RANGE 33 -2147483648 2147483647
+ENUMERATION 34 2 off on
+FLOAT_RANGE 35 -Infinity Infinity
+ENUMERATION 36 2 no yes
+ENUMERATION 37 2 off on
+ENUMERATION 38 5 backward forward left right silent
+INTEGER_RANGE 39 -2147483648 2147483647
+INTEGER_RANGE 40 -2147483648 2147483647
+SOAR_ID 41
 SOAR_ID 42
-SOAR_ID 43
-ENUMERATION 44 1 complete
-ENUMERATION 45 1 missile
+INTEGER_RANGE 43 -2147483648 2147483647
+SOAR_ID 44
+ENUMERATION 45 1 initialize-tanks-soar
 SOAR_ID 46
-ENUMERATION 47 3 center left right
-INTEGER_RANGE 48 0 13
-SOAR_ID 49
-ENUMERATION 50 1 initialize-tanks-soar
+SOAR_ID 47
+SOAR_ID 48
+ENUMERATION 49 1 complete
+ENUMERATION 50 1 missile
 SOAR_ID 51
-ENUMERATION 52 1 radar-off
-SOAR_ID 53
-ENUMERATION 54 1 wander
-SOAR_ID 55
-ENUMERATION 56 1 chase
-SOAR_ID 57
-STRING 58
-STRING 59
-ENUMERATION 60 5 backward forward left right silent
-ENUMERATION 61 1 fire
-SOAR_ID 62
-ENUMERATION 63 1 slide
+ENUMERATION 52 3 center left right
+INTEGER_RANGE 53 0 13
+SOAR_ID 54
+ENUMERATION 55 1 wander
+SOAR_ID 56
+ENUMERATION 57 1 state
+ENUMERATION 58 1 wander
+ENUMERATION 59 1 t
+ENUMERATION 60 4 tie conflict constraint-failure no-change
+ENUMERATION 61 3 multiple constraint-failure none
+FLOAT_RANGE 62 -Infinity Infinity
+SOAR_ID 63
 SOAR_ID 64
-SOAR_ID 65
-ENUMERATION 66 1 state
-ENUMERATION 67 1 wander
-ENUMERATION 68 1 t
-ENUMERATION 69 4 tie conflict constraint-failure no-change
-ENUMERATION 70 3 multiple constraint-failure none
-FLOAT_RANGE 71 -Infinity Infinity
-SOAR_ID 72
+INTEGER_RANGE 65 -2147483648 2147483647
+SOAR_ID 66
+SOAR_ID 67
+SOAR_ID 68
+SOAR_ID 69
+ENUMERATION 70 1 move
+SOAR_ID 71
+ENUMERATION 72 1 turn
 SOAR_ID 73
-INTEGER_RANGE 74 -2147483648 2147483647
+ENUMERATION 74 1 radar
 SOAR_ID 75
 SOAR_ID 76
-SOAR_ID 77
-SOAR_ID 78
-ENUMERATION 79 1 move
-SOAR_ID 80
-ENUMERATION 81 1 turn
+ENUMERATION 77 4 backward forward left right
+ENUMERATION 78 1 complete
+SOAR_ID 79
+ENUMERATION 80 1 complete
+ENUMERATION 81 2 left right
 SOAR_ID 82
-SOAR_ID 83
-ENUMERATION 84 1 state
-ENUMERATION 85 1 chase
-ENUMERATION 86 1 t
-ENUMERATION 87 4 tie conflict constraint-failure no-change
-ENUMERATION 88 3 multiple constraint-failure none
-FLOAT_RANGE 89 -Infinity Infinity
-SOAR_ID 90
+ENUMERATION 83 1 complete
+ENUMERATION 84 2 on off
+SOAR_ID 85
+ENUMERATION 86 1 complete
+INTEGER_RANGE 87 1 14
+SOAR_ID 88
+ENUMERATION 89 1 complete
+ENUMERATION 90 2 on off
 SOAR_ID 91
-INTEGER_RANGE 92 -2147483648 2147483647
+ENUMERATION 92 1 attack
 SOAR_ID 93
-SOAR_ID 94
-SOAR_ID 95
-SOAR_ID 96
-ENUMERATION 97 1 move
-SOAR_ID 98
-ENUMERATION 99 1 turn
+ENUMERATION 94 1 state
+ENUMERATION 95 1 attack
+ENUMERATION 96 1 t
+ENUMERATION 97 4 tie conflict constraint-failure no-change
+ENUMERATION 98 3 multiple constraint-failure none
+FLOAT_RANGE 99 -Infinity Infinity
 SOAR_ID 100
 SOAR_ID 101
-ENUMERATION 102 1 attack
+INTEGER_RANGE 102 -2147483648 2147483647
 SOAR_ID 103
-ENUMERATION 104 1 state
-ENUMERATION 105 1 attack
-ENUMERATION 106 1 t
-ENUMERATION 107 4 tie conflict constraint-failure no-change
-ENUMERATION 108 3 multiple constraint-failure none
-FLOAT_RANGE 109 -Infinity Infinity
+SOAR_ID 104
+SOAR_ID 105
+SOAR_ID 106
+ENUMERATION 107 1 fire-missile
+SOAR_ID 108
+ENUMERATION 109 1 move
 SOAR_ID 110
-SOAR_ID 111
-INTEGER_RANGE 112 -2147483648 2147483647
-SOAR_ID 113
+ENUMERATION 111 1 slide
+SOAR_ID 112
+ENUMERATION 113 1 turn
 SOAR_ID 114
 SOAR_ID 115
-SOAR_ID 116
-ENUMERATION 117 1 fire-missile
-SOAR_ID 118
-ENUMERATION 119 1 move
-SOAR_ID 120
-ENUMERATION 121 1 slide
-SOAR_ID 122
-ENUMERATION 123 1 turn
+ENUMERATION 116 1 chase
+SOAR_ID 117
+ENUMERATION 118 1 state
+ENUMERATION 119 1 chase
+ENUMERATION 120 1 t
+ENUMERATION 121 4 tie conflict constraint-failure no-change
+ENUMERATION 122 3 multiple constraint-failure none
+FLOAT_RANGE 123 -Infinity Infinity
 SOAR_ID 124
-ENUMERATION 125 1 aa
-SOAR_ID 126
+SOAR_ID 125
+INTEGER_RANGE 126 -2147483648 2147483647
 SOAR_ID 127
 SOAR_ID 128
 SOAR_ID 129
 SOAR_ID 130
-SOAR_ID 131
+ENUMERATION 131 1 move
 SOAR_ID 132
-SOAR_ID 133
-150
+ENUMERATION 133 1 turn
+SOAR_ID 134
+SOAR_ID 135
+ENUMERATION 136 1 retreat
+SOAR_ID 137
+ENUMERATION 138 1 state
+ENUMERATION 139 1 retreat
+ENUMERATION 140 1 t
+ENUMERATION 141 4 tie conflict constraint-failure no-change
+ENUMERATION 142 3 multiple constraint-failure none
+FLOAT_RANGE 143 -Infinity Infinity
+SOAR_ID 144
+SOAR_ID 145
+INTEGER_RANGE 146 -2147483648 2147483647
+SOAR_ID 147
+SOAR_ID 148
+SOAR_ID 149
+SOAR_ID 150
+ENUMERATION 151 1 move
+SOAR_ID 152
+ENUMERATION 153 1 low
+ENUMERATION 154 2 operator state
+ENUMERATION 155 2 multiple none
+ENUMERATION 156 2 no-change tie
+SOAR_ID 157
+ENUMERATION 158 1 wait
+ENUMERATION 159 4 forward backward left right
+SOAR_ID 160
+ENUMERATION 161 4 forward backward left right
+ENUMERATION 162 4 forward backward left right
+ENUMERATION 163 4 forward backward left right
+ENUMERATION 164 4 forward backward left right
+187
 0 io 1
-0 operator 42
+0 name 6
+0 operator 44
+0 operator 46
 0 superstate 5
 0 top-state 0
 0 type 4
-0 operator 49
-0 operator 51
-0 operator 53
-0 operator 55
-0 status 57
-0 operator 62
-0 operator 64
-0 operator 101
-0 name 6
+0 operator 54
+0 operator 91
+0 operator 115
+0 operator 135
+0 missiles-energy 153
+0 attribute 154
+0 choices 155
+0 impasse 156
+0 operator 157
+0 sound-direction 159
+0 side-direction 160
 1 input-link 2
 1 output-link 3
-2 blocked 17
-2 clock 18
-2 direction 19
-2 energy 21
-2 energyrecharger 20
-2 health 22
-2 healthrecharger 23
-2 incoming 17
-2 missiles 28
-2 my-color 29
-2 radar 39
-2 radar-distance 30
-2 radar-setting 31
-2 radar-status 32
-2 random 33
-2 resurrect 34
-2 rwaves 17
-2 shield-status 35
-2 smell 40
-2 x 37
-2 y 38
-2 sound 60
-3 fire 43
-3 move 7
-3 radar 8
-3 radar-power 9
-3 rotate 10
-3 shields 11
-7 direction 13
-7 status 12
-8 status 12
-8 switch 14
-9 setting 15
-9 status 12
-10 direction 16
-10 status 12
-11 status 12
-11 switch 14
-17 backward 24
-17 forward 25
-17 left 26
-17 right 27
-39 energy 46
-39 health 46
-39 missiles 46
-39 obstacle 46
-39 open 46
-39 tank 46
-40 color 29
-40 distance 41
-42 actions 133
-43 status 44
-43 weapon 45
-46 distance 48
-46 position 47
-49 name 50
-51 name 52
-53 name 54
-55 name 56
-57 energy 59
-57 missiles 58
-57 sound-direction 36
-62 name 61
-64 name 63
-65 type 66
-65 superstate 0
-65 name 67
-65 top-state 0
-65 quiescence 68
-65 impasse 69
-65 choices 70
-65 reward-link 71
-65 epmem 72
-65 smem 76
-65 operator 80
-65 operator 82
-65 operator 126
-72 command 73
-72 present-id 74
-72 result 75
-76 command 77
-76 result 78
-80 name 79
-82 name 81
-83 type 84
-83 superstate 0
-83 name 85
-83 top-state 0
-83 quiescence 86
-83 impasse 87
-83 choices 88
-83 reward-link 89
-83 epmem 90
-83 smem 94
-83 operator 98
-83 operator 100
-90 command 91
-90 present-id 92
-90 result 93
-94 command 95
-94 result 96
-98 name 97
-100 name 99
-101 name 102
-103 type 104
-103 superstate 0
-103 name 105
-103 top-state 0
-103 quiescence 106
-103 impasse 107
-103 choices 108
-103 reward-link 109
-103 epmem 110
-103 smem 114
-103 operator 118
-103 operator 120
-103 operator 122
-103 operator 124
-110 command 111
-110 present-id 112
-110 result 113
-114 command 115
-114 result 116
-118 name 117
-120 name 119
-122 name 121
-124 name 123
-126 name 125
-133 move 128
-133 radar 129
-133 fire 127
-133 radar-power 130
-133 rotate 131
-133 shields 132
+2 blocked 19
+2 clock 20
+2 direction 21
+2 energy 23
+2 energyrecharger 22
+2 health 24
+2 healthrecharger 25
+2 incoming 19
+2 missiles 30
+2 my-color 31
+2 radar 41
+2 radar-distance 32
+2 radar-setting 33
+2 radar-status 34
+2 random 35
+2 resurrect 36
+2 rwaves 19
+2 shield-status 37
+2 smell 42
+2 sound 38
+2 x 39
+2 y 40
+3 fire 48
+3 move 8
+3 radar 9
+3 radar-power 10
+3 rotate 11
+3 shields 12
+7 status 13
+7 weapon 14
+8 direction 15
+8 status 13
+9 status 13
+9 switch 16
+10 setting 17
+10 status 13
+11 direction 18
+11 status 13
+12 status 13
+12 switch 16
+19 backward 26
+19 forward 27
+19 left 28
+19 right 29
+41 energy 51
+41 health 51
+41 missiles 51
+41 obstacle 51
+41 open 51
+41 tank 51
+42 color 31
+42 distance 43
+44 name 45
+46 actions 47
+47 fire 7
+47 move 76
+47 rotate 79
+47 radar 82
+47 radar-power 85
+47 shields 88
+48 status 49
+48 weapon 50
+51 distance 53
+51 position 52
+54 name 55
+54 actions 47
+56 type 57
+56 superstate 0
+56 name 58
+56 top-state 0
+56 quiescence 59
+56 impasse 60
+56 choices 61
+56 reward-link 62
+56 epmem 63
+56 smem 67
+56 operator 71
+56 operator 73
+56 operator 75
+63 command 64
+63 present-id 65
+63 result 66
+67 command 68
+67 result 69
+71 name 70
+73 name 72
+75 name 74
+76 direction 77
+76 status 78
+79 status 80
+79 direction 81
+82 status 83
+82 switch 84
+85 status 86
+85 setting 87
+88 status 89
+88 switch 90
+91 name 92
+91 actions 47
+93 type 94
+93 superstate 0
+93 name 95
+93 top-state 0
+93 quiescence 96
+93 impasse 97
+93 choices 98
+93 reward-link 99
+93 epmem 100
+93 smem 104
+93 operator 108
+93 operator 110
+93 operator 112
+93 operator 114
+100 command 101
+100 present-id 102
+100 result 103
+104 command 105
+104 result 106
+108 name 107
+110 name 109
+112 name 111
+114 name 113
+115 name 116
+115 actions 47
+117 type 118
+117 superstate 0
+117 name 119
+117 top-state 0
+117 quiescence 120
+117 impasse 121
+117 choices 122
+117 reward-link 123
+117 epmem 124
+117 smem 128
+117 operator 132
+117 operator 134
+124 command 125
+124 present-id 126
+124 result 127
+128 command 129
+128 result 130
+132 name 131
+134 name 133
+135 name 136
+135 actions 47
+137 type 138
+137 superstate 0
+137 name 139
+137 top-state 0
+137 quiescence 140
+137 impasse 141
+137 choices 142
+137 reward-link 143
+137 epmem 144
+137 smem 148
+137 operator 152
+144 command 145
+144 present-id 146
+144 result 147
+148 command 149
+148 result 150
+152 name 151
+157 name 158
+160 forward 161
+160 backward 164
+160 left 163
+160 right 162

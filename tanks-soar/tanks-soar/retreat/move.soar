@@ -1,0 +1,17 @@
+## Propose Move Sidestep Operator
+## If the state is named retreat then propose sidestep from 
+# the direction of a detected enemy, as long as that 
+# direction is not blocked, is not the direction of another
+# enemy or is a direction to avoid.
+sp {retreat*propose*move
+    (state <s> ^name retreat
+               ^direction <dir>
+               ^side-direction.<dir> <side-dir>
+              -^direction <side-dir>
+              -^avoid-direction <side-dir>
+               ^io.input-link.blocked.<side-dir> no)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name move
+         ^actions.move.direction <side-dir>)
+}

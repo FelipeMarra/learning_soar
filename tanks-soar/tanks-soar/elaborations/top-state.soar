@@ -1,4 +1,3 @@
-############### General #####################
 sp {elaborate*top-state*top-state
   (state <s> ^name tanks-soar)
 -->
@@ -11,7 +10,7 @@ sp {elaborate*state*energy-low
     (state <s> ^name tanks-soar
                ^io.input-link.energy <= 200)
 -->
-    (<s> ^status.energy low)
+    (<s> ^missiles-energy low)
 }
 
 # Missiles low
@@ -19,5 +18,5 @@ sp {elaborate*state*missiles-low
     (state <s> ^name tanks-soar
                ^io.input-link.missiles 0)
 -->
-    (<s> ^status.missiles low)
+    (<s> ^missiles-energy low)
 }

@@ -1,0 +1,12 @@
+## Propose Wait
+## If the state is named retreat then propose wait, and make
+# a worst preference for it.
+# Proposed to avoid the state-no-change cascade
+sp {top-state*propose*wait
+    (state <s> ^attribute state
+               ^choices none
+              -^operator.name wait)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name wait)
+}

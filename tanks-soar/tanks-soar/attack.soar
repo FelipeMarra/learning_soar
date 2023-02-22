@@ -8,10 +8,7 @@
 sp {propose*attack
     (state <s> ^name tanks-soar
                ^io.input-link.radar.tank
-               ^status <status>)
-
-    (<status> -^missiles low
-              -^energy low)
+               -^missiles-energy low)
 -->
     (<s> ^operator <o> + =)
     (<o> ^name attack)
