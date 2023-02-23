@@ -1,3 +1,4 @@
 source output.soar
 source shields.soar
+source sound.soar
 source wait.soar

@@ -4,7 +4,7 @@ sp {elaborate*top-state*top-state
   (<s> ^top-state <s>)
 }
 
-############## Input Link ###################
+############## Energy Low ###################
 # Energy low 
 sp {elaborate*state*energy-low
     (state <s> ^name tanks-soar
@@ -19,4 +19,19 @@ sp {elaborate*state*missiles-low
                ^io.input-link.missiles 0)
 -->
     (<s> ^missiles-energy low)
+}
+
+############ Directions ###############
+sp {elaborate*directions
+    (state <s> ^superstate nil)
+-->
+    (<s> ^direction-map <dm>)
+    (<dm> ^north <north>
+          ^south <south>
+          ^west <west>
+          ^east <east>)
+    (<north> ^right east ^left west ^backward south ^forward north)
+    (<south> ^right west ^left east ^backward north ^forward south)
+    (<west> ^right north ^left south ^backward east ^forward west)
+    (<east> ^right south ^left north ^backward west ^forward east)
 }

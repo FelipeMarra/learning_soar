@@ -6,11 +6,10 @@
 # not low, then propose the chase operator.
 sp {propose*chase
     (state <s> ^name tanks-soar
-               ^io.input-link <input>
+               ^sound
+              -^io.input-link.radar.tank
               -^missiles-energy low)
 
-    (<input> ^sound <> silent
-            -^radar.tank)
 -->
     (<s> ^operator <o> +)
     (<o> ^name chase)

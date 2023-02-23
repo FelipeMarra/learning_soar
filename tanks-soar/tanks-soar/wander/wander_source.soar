@@ -1,4 +1,5 @@
 source elaborations.soar
 source move.soar
 source radar.soar
+source sound.soar
 source turn.soar
