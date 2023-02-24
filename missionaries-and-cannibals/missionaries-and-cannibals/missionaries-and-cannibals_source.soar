@@ -5,5 +5,7 @@ popd
 pushd elaborations
 source elaborations_source.soar
 popd
+source desired.soar
 source initialize-missionaries-and-cannibals.soar
 source move.soar
+source undesired.soar
