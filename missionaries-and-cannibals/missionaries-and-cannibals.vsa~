@@ -10,5 +10,7 @@ VERSION 4
 7	0	OPERATOR desired desired.soar 10
 8	0	OPERATOR initialize-missionaries-and-cannibals initialize-missionaries-and-cannibals.soar 8
 9	0	OPERATOR move move.soar 9
-10	0	OPERATOR undesired undesired.soar 11
+10	0	OPERATOR record record.soar 12
+11	0	OPERATOR search-ctrl search-ctrl.soar 13
+12	0	OPERATOR undesired undesired.soar 11
 END

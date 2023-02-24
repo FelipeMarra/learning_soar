@@ -7,6 +7,10 @@ VERSION 4
 4	3	FOPERATOR _all _all.soar 5
 5	3	FOPERATOR monitor monitor.soar 6
 6	3	FOPERATOR top-state top-state.soar 7
-7	0	OPERATOR initialize-missionaries-and-cannibals initialize-missionaries-and-cannibals.soar 8
-8	0	OPERATOR move move.soar 9
+7	0	OPERATOR desired desired.soar 8
+8	0	OPERATOR initialize-missionaries-and-cannibals initialize-missionaries-and-cannibals.soar 9
+9	0	OPERATOR move move.soar 10
+10	0	OPERATOR record record.soar 11
+11	0	OPERATOR search-ctrl search-ctrl.soar 12
+12	0	OPERATOR undesired undesired.soar 13
 END

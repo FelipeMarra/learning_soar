@@ -1,13 +1,13 @@
 # mac*detect*undesired-state
 # If the name of the state is mac and there are more cannibals than
 # missionaries, and there is at least one missionary, on one bank of the
-# river, then write that the problem has failed to be solved, and halt.
+# river, then augment the state with failure true.
 sp {mac*evaluate*state*failure*more*cannibals
 (state <s> ^desired <d>
            ^<< right-bank left-bank >> <bank>)
     (<bank> ^missionaries { <n> > 0 }
             ^cannibals > <n>)
 -->
-    (write (crlf) |The problem has failed.|)
-    (halt)
+    (write (crlf) |Failure State.|)
+    (<s> ^failure <d>)
 }

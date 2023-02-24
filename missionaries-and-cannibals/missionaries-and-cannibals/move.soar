@@ -1,6 +1,6 @@
 ## PROPOSAL
 
-# propose*move-mac-boat*1
+# propose*move-boat*1
 # If the name of the state is mac and there is one or more cannibal or
 # missionary on the same bank of the river as the boat, then propose moving
 # that cannibal or missionary across the river.
@@ -19,7 +19,7 @@ sp {propose*operator*move-boat1
          ^types 1)
 }
 
-# propose*move-mac-boat*2
+# propose*move-boat*2
 # If the name of the state is mac and there are two or more cannibals or
 # missionaries on the same bank of the river as the boat, then propose moving
 # two of that type across the river.
@@ -38,7 +38,7 @@ sp {propose*operator*move-boat2
          ^types 1)
 }
 
-# propose*move-mac-boat*1
+# propose*move-boat*1
 # If the name of the state is mac and there is one or more cannibal and one or
 # more missionaries on the same bank of the river as the boat, then propose
 # moving one cannibal and one missionary across the river.
@@ -62,7 +62,7 @@ sp {propose*operator*move-boat3
 }
 
 ## APPLICATION
-# apply*move-mac-boat
+# apply*move-boat
 # If there is a move-boat operator selected for a type and number, then
 # subtract the values of that type on the current bank and add those values
 # to the other bank.

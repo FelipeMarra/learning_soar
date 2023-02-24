@@ -1,4 +1,4 @@
-23
+27
 SOAR_ID 0
 SOAR_ID 1
 SOAR_ID 2
@@ -22,7 +22,11 @@ SOAR_ID 19
 ENUMERATION 20 1 desired
 SOAR_ID 21
 ENUMERATION 22 1 undesired
-23
+SOAR_ID 23
+ENUMERATION 24 1 record
+SOAR_ID 25
+ENUMERATION 26 1 search-ctrl
+27
 0 type 5
 0 superstate 6
 0 top-state 0
@@ -35,6 +39,8 @@ ENUMERATION 22 1 undesired
 0 operator 17
 0 operator 19
 0 operator 21
+0 operator 23
+0 operator 25
 1 input-link 2
 1 output-link 3
 4 name 8
@@ -46,3 +52,5 @@ ENUMERATION 22 1 undesired
 17 name 18
 19 name 20
 21 name 22
+23 name 24
+25 name 26

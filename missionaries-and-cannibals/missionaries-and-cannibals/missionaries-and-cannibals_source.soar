@@ -8,4 +8,6 @@ popd
 source desired.soar
 source initialize-missionaries-and-cannibals.soar
 source move.soar
+source record.soar
+source search-ctrl.soar
 source undesired.soar

@@ -1,0 +1,62 @@
+# select*operator*prefer*inverse*failure
+# If the name of the state is mac and the current state is a failure state
+# and the last operator is the inverse of a proposed operator, then prefer
+# that operator.
+sp {select*operator*prefer*inverse*failure*types*2
+    (state <s> ^name mac
+               ^operator <o> +
+               ^failure <d>
+               ^last-operator <last-op>)
+
+    (<o> ^name move-boat
+         ^<type> <number>
+         ^types 1)
+
+    (<last-op> ^types 1
+          ^type <type>
+          ^number <number>)
+-->
+    (<s> ^operator <o> >)
+}
+
+sp {select*operator*prefer*inverse*failure*types*1
+    (state <s> ^name mac
+               ^operator <o> +
+               ^failure <d>
+               ^last-operator.types 2)
+
+    (<o> ^types 2)
+-->
+    (<s> ^operator <o> >)
+}
+
+# mac*select*operator*avoid*inverse*not*failure
+# If the name of the state is mac and the current state is not a failure
+# state and the last operator is the inverse of a proposed operator, then
+# avoid that operator.
+sp {select*operator*avoid*inverse*not*failure*1
+    (state <s> ^name mac
+               ^operator <o> +
+              -^failure <d>
+               ^last-operator <lo>)
+
+    (<o> ^types 1
+         ^<type> <number>)
+
+    (<lo> ^types 1
+          ^type <type>
+          ^number <number>)
+-->
+    (<s> ^operator <o> < )
+}
+
+sp {select*operator*avoid*inverse*not*failure*2
+    (state <s> ^name mac
+               ^operator <o> +
+              -^failure <d>
+               ^last-operator.types 2 <lo>)
+
+    (<o> ^types 2)
+-->
+    (<s> ^operator <o> < )
+}
