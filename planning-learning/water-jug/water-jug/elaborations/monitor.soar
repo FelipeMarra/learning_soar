@@ -1,0 +1,44 @@
+sp {water-jug*monitor*state
+    (state <s> ^name water-jug
+               ^jug <j1> <j2>)
+
+    (<j1> ^volume 3 ^contents <c1>)
+    (<j2> ^volume 5 ^contents <c2>)
+-->
+    #crlf to jump line when the state changes
+    (write (crlf) | 3:| <c1> | 5:| <c2>)
+}
+
+sp {water-jug*monitor*operator-application*empty
+    (state <s> ^name water-jug
+               ^operator <o>)
+    
+    (<o> ^name empty
+         ^empty-jug.volume <v>)
+-->
+    (write | EMPTY (| <v> |)| )
+}
+
+sp {water-jug*monitor*operator-application*fill
+    (state <s> ^name water-jug
+               ^operator <o>)
+    
+    (<o> ^name fill
+         ^fill-jug.volume <v>)
+-->
+    (write | FILL (| <v> |)|)
+}
+
+sp {water-jug*monitor*operator-application*pour
+    (state <s> ^name water-jug
+               ^operator <o>)
+    
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+    
+    (<j1> ^volume <v1> ^contents <c1>)
+    (<j2> ^volume <v2> ^contents <c2>)
+-->
+    (write | POUR (| <v1> |: | <c1> |, | <v2> |: | <c2> |)|)
+}

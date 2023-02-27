@@ -1,0 +1,21 @@
+sp {water-jug*elaborate*problem-space
+    (state <s> ^name water-jug)
+-->
+    (<s> ^problem-space <p>)
+
+    (<p> ^name water-jug
+         ^default-state-copy yes
+         ^two-level-attributes jug)
+}
+
+sp {Impasse__Operator_Tie*elaborate*superstate-set
+    (state <s> ^superstate <ss>)
+-->
+    (<s> ^superstate-set <ss>)
+}
+
+sp {Impasse__Operator_Tie*elaborate*superstate-set2
+    (state <s> ^superstate.superstate-set <ss>)
+-->
+    (<s> ^superstate-set <ss>)
+}

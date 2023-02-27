@@ -1,0 +1,11 @@
+#water jug elaborate empty
+#if task is water jug
+#set the empty value of the jugs to volume - contents
+sp {water-jug*elaborate*empty
+    (state <s> ^name water-jug
+               ^jug <j>)
+    (<j> ^volume <v>
+         ^contents <c>)
+-->
+    (<j> ^empty (- <v> <c>))
+}
