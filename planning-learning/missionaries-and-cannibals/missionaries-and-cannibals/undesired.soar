@@ -1,0 +1,34 @@
+# mac*detect*undesired-state
+# If the name of the state is mac and there are more cannibals than
+# missionaries, and there is at least one missionary, on one bank of the
+# river, then augment the state with failure.
+sp {evaluate*state*failure*more*cannibals
+(state <s> ^desired <d>
+           ^<< right-bank left-bank >> <bank>)
+    (<bank> ^missionaries { <n> > 0 }
+            ^cannibals > <n>)
+-->
+    (write (crlf) |Failure State.|)
+    (<s> ^failure <d>)
+}
+
+sp {mac*evaluate*state*failure*duplicate
+    (state <s1> ^desired <d>
+                ^right-bank <rb>
+                ^left-bank <lb>)
+
+    (<rb> ^missionaries <rbm> ^cannibals <rbc> ^boat <rbb>)
+    (<lb> ^missionaries <lbm> ^cannibals <lbc> ^boat <lbb>)
+
+    (state { <> <s1> <s2> }
+           ^right-bank <rb2>
+           ^left-bank <lb2>
+           ^tried-tied-operator)
+
+    (<rb2> ^missionaries <rbm> ^cannibals <rbc> ^boat <rbb>)
+    (<lb2> ^missionaries <lbm> ^cannibals <lbc> ^boat <lbb>)
+
+    -(state <s3> ^superstate <s2>)
+-->
+    (<s2> ^failure <d>)
+}

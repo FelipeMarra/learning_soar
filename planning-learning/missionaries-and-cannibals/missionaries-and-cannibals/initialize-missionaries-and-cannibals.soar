@@ -1,0 +1,33 @@
+sp {propose*initialize-mac
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name initialize-mac)
+}
+
+sp {apply*initialize-mac
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-mac)
+-->
+   (<s> ^name mac
+        ^left-bank <lb>
+        ^right-bank <rb>
+        ^desired <desired>)
+
+    (<lb> ^missionaries 3
+          ^cannibals 3
+          ^boat 1
+          ^other-bank <rb>)
+
+    (<rb> ^missionaries 0
+          ^cannibals 0
+          ^boat 0
+          ^other-bank <lb>)
+
+    (<desired> ^right-bank <desired-rb>)
+    (<desired-rb> ^missionaries 3
+                  ^cannibals 3
+                  ^boat 1)
+}
+

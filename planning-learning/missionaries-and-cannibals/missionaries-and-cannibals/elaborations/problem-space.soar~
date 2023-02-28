@@ -1,0 +1,27 @@
+sp {elaborate*problem-space
+    (state <s> ^name mac)
+--> 
+    (<s> ^problem-space <ps>)
+    (<ps> ^name missionaries-and-cannibals
+          ^default-state-copy yes
+          ^two-level-attributes right-bank left-bank)
+}
+
+sp {evaluate*state*failure*duplicate
+    (state <s1> ^desired <d>
+                ^right-bank <rb>
+                ^left-bank <lb>)
+    (<rb> ^missionaries <rbm> ^cannibals <rbc> ^boat <rbb>)
+    (<lb> ^missionaries <lbm> ^cannibals <lbc> ^boat <lbb>)
+
+    (state { <> <s1> <s2> }
+           ^right-bank <rb2>
+           ^left-bank <lb2>
+           ^tried-tied-operator)
+
+    (<rb2> ^missionaries <rbm> ^cannibals <rbc> ^boat <rbb>)
+    (<lb2> ^missionaries <lbm> ^cannibals <lbc> ^boat <lbb>)
+   -(state <s3> ^superstate <s2>)
+-->
+    (<s2> ^failure <d>)
+}

@@ -1,0 +1,84 @@
+## PROPOSAL
+
+# propose*move-boat*1
+# If the name of the state is mac and there is one or more cannibal or
+# missionary on the same bank of the river as the boat, then propose moving
+# that cannibal or missionary across the river.
+sp {propose*operator*move-boat1
+    (state <s> ^name mac
+               ^<< right-bank left-bank >> <bank>)
+
+    (<bank> ^{<< cannibals missionaries >> <type>} > 0
+            ^boat 1)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name move-boat
+         ^bank <bank>
+         ^<type> 1
+         ^boat 1
+         ^types 1)
+}
+
+# propose*move-boat*2
+# If the name of the state is mac and there are two or more cannibals or
+# missionaries on the same bank of the river as the boat, then propose moving
+# two of that type across the river.
+sp {propose*operator*move-boat2
+    (state <s> ^name mac
+               ^<< right-bank left-bank >> <bank>)
+
+    (<bank> ^{<< cannibals missionaries >> <type>} > 1
+            ^boat 1)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name move-boat
+         ^bank <bank>
+         ^<type> 2
+         ^boat 1
+         ^types 1)
+}
+
+# propose*move-boat*1
+# If the name of the state is mac and there is one or more cannibal and one or
+# more missionaries on the same bank of the river as the boat, then propose
+# moving one cannibal and one missionary across the river.
+sp {propose*operator*move-boat3
+    (state <s> ^name mac
+               ^<< right-bank left-bank >> <bank>)
+
+    (<bank> ^missionaries > 0
+            ^boat 1)
+
+    (<bank> ^cannibals > 0
+            ^boat 1)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name move-boat
+         ^bank <bank>
+         ^missionaries 1
+         ^cannibals 1
+         ^boat 1
+         ^types 2)
+}
+
+## APPLICATION
+# apply*move-boat
+# If there is a move-boat operator selected for a type and number, then
+# subtract the values of that type on the current bank and add those values
+# to the other bank.
+sp {apply*move*boat
+    (state <s> ^operator <o>)
+    (<o> ^name move-boat
+         ^bank <bank>
+         ^types <types>
+         ^{<< missionaries cannibals boat >> <type>} <op-amount>)
+
+    (<bank> ^<type> <bank-amount>
+            ^other-bank <other-bank>)
+    (<other-bank> ^<type> <other-amount>)
+-->
+    (<bank> ^<type> <bank-amount> -
+                    (- <bank-amount> <op-amount>))
+    (<other-bank> ^<type> <other-amount> -
+                          (+ <other-amount> <op-amount>))
+}
