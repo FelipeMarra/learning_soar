@@ -1,0 +1,16 @@
+sp {elaborate*reward
+    (state <s> ^name left-right
+               ^reward-link <r>
+               ^location <location>
+               ^direction <dir>)
+    (<dir> ^name <location> ^reward <reward>)
+-->
+    (<r> ^reward.value <reward>)
+}
+
+sp {elaborate*done
+    (state <s> ^name left-right
+               ^location {<> start})
+-->
+    (halt)
+}
