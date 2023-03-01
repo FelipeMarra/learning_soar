@@ -1,0 +1,89 @@
+#water jug propose empty
+#if task water jug && a jug is not empty propose empty
+sp {water-jug*propose*empty
+    (state <s> ^name water-jug
+               ^jug <j>)
+    (<j> ^contents > 0)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name empty
+        ^empty-jug <j>)
+}
+
+#water-jug apply empty
+#If operator is "empty", empty the jug
+#in the empty-jug attr (contents = 0)
+sp {water-jug*apply*empty
+    (state <s> ^name water-jug
+               ^operator <o>)
+
+    (<o> ^name empty
+         ^empty-jug <j>)
+
+    (<j> ^contents <c>)
+-->
+    (<j> ^contents 0
+         ^contents <c> -)
+}
+
+#water-jug apply operator record last-operator empty
+#if task is water-jug and the empty op. is selected
+#create an state augmentation "last-operator" with the
+#op.'s name and a copy of it's augmentations
+sp {water-jug*apply*operator*record*last-operator*empty
+    (state <s> ^name water-jug
+               ^operator <o>)
+    (<o> ^name empty
+         ^empty-jug <j>)
+-->
+    (<s> ^last-operator <last-op>)
+    (<last-op> ^name empty
+               ^empty-jug <j>)
+}
+
+#water-jug apply operator remove old last-operator empty
+#if task is water jug and empty is seleceted and last-op
+#does not have the same name and jugs, remove last-op
+sp {water-jug*apply*operator*remove*old*last-operator*empty
+    (state <s> ^name water-jug
+               ^operator <o>
+               ^last-operator <last-op>)
+
+    (<o> ^empty-jug <j>)
+
+    -(<last-op> ^name empty
+                ^empty-jug <j>)
+-->
+    (<s> ^last-operator <last-op> -)
+}
+
+#water-jug select operator avoid inverse empty
+#if task is water jug and last op was fill <j>
+#avoid empty <j>
+sp {water-jug*select*operator*avoid*inverse*empty
+    (state <s> ^name water-jug
+               ^operator <o> +
+               ^last-operator <last-op>)
+
+    (<o> ^name empty
+         ^empty-jug <j>)
+
+    (<last-op> ^name fill
+               ^fill-jug <j>)
+-->
+    (<s> ^operator <o> <)
+}
+
+gp {rl*water-jug*empty
+    (state <s> ^name water-jug
+               ^operator <op> +
+               ^jug <j1> <j2>)
+    (<op> ^name empty
+          ^empty-jug.volume [3 5])
+    (<j1> ^volume 3
+          ^contents [0 1 2 3])
+    (<j2> ^volume 5
+          ^contents [0 1 2 3 4 5])
+-->
+    (<s> ^operator <op> = 0)
+}

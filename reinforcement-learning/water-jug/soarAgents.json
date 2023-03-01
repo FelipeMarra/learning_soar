@@ -1,0 +1,9 @@
+{
+    "entryPoints": [
+        {
+            "path": "water-jug.soar",
+            "name": "water-jug"
+        }
+    ],
+    "active": ""
+}

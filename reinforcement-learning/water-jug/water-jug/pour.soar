@@ -1,0 +1,135 @@
+#water jug propose pour
+#if task water jug && j1 is not empty && j2 is not full
+#popose pouring from j1 into j2
+sp {water-jug*popose*pour
+    (state <s> ^name water-jug
+               ^jug <j1>
+               ^jug { <j2> <> <j1> })
+
+    (<j1> ^contents > 0)
+    (<j2> ^empty > 0)
+-->
+    (<s> ^operator <o> +)
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+}
+
+#water-jug apply pour will NOT empty empty-jug
+#If operator is "pour", and j1.c > j2.empty
+#pour from the jug in the empty-jug(j1) attr 
+#(j1.c = j1.c - j2.empty) into the fill-jug(j2)
+#attr (j2.c = j2.v)
+sp {water-jug*apply*pour*will-not-empty-empty-jug
+    (state <s> ^name water-jug
+               ^operator <o>)
+
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+
+    (<j2> ^empty <e2>
+          ^volume <v2>
+          ^contents <c2>)
+
+    (<j1> ^contents {<c1> > <e2>})
+
+-->
+    (<j1> ^contents (- <c1> <e2>)
+          ^contents <c1> -)
+    
+    (<j2> ^contents <v2>
+          ^contents <c2> -)
+}
+
+#water-jug apply pour will empty empty-jug
+#If operator is "pour", and j1.c <= j2.empty
+#pour from the jug in the empty-jug(j1) attr 
+#(j1.c = 0) into the fill-jug(j2)
+#attr (j2.c = j1.c + j2.c)
+sp {water-jug*apply*pour*will-empty-empty-jug
+    (state <s> ^name water-jug
+               ^operator <o>)
+
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+
+    (<j2> ^empty <e2>
+          ^contents <c2>)
+
+    (<j1> ^contents {<c1> <= <e2>})
+
+-->
+    (<j1> ^contents 0
+          ^contents <c1> -)
+    
+    (<j2> ^contents (+ <c1> <c2>)
+          ^contents <c2> -)
+}
+
+#water-jug apply operator record last-operator pour
+#if task is water-jug and the pour op. is selected
+#create an state augmentation "last-operator" with the
+#op.'s name and a copy of it's augmentations
+sp {water-jug*apply*operator*record*last-operator*pour
+    (state <s> ^name water-jug
+               ^operator <o>)
+    (<o> ^name pour
+         ^empty-jug <j1>
+         ^fill-jug <j2>)
+-->
+    (<s> ^last-operator <last-op>)
+    (<last-op> ^name pour
+               ^empty-jug <j1>
+               ^fill-jug <j2>)
+}
+
+#water-jug apply operator remove old last-operator pour
+#if task is water jug and pour is seleceted and last-op
+#does not have the same name and jugs, remove last-op
+sp {water-jug*apply*operator*remove*old*last-operator*pour
+    (state <s> ^name water-jug
+               ^operator <o>
+               ^last-operator <last-op>)
+
+    (<o> ^empty-jug <j1>
+         ^fill-jug <j2>)
+
+    -(<last-op> ^name pour
+                ^empty-jug <j1>
+                ^fill-jug <j2>)
+-->
+    (<s> ^last-operator <last-op> -)
+}
+
+#water-jug select operator avoid inverse pour
+#if task is water jug and last op was pour fom <j1> to <j2>
+#avoid pour from <j2> to <j1>
+sp {water-jug*select*operator*avoid*inverse*pour
+    (state <s> ^name water-jug
+               ^operator <o> +
+               ^last-operator <last-op>)
+
+    (<o> ^name pour
+         ^fill-jug <j>)
+
+    (<last-op> ^name pour
+               ^empty-jug <j>)
+-->
+    (<s> ^operator <o> <)
+}
+
+gp {rl*water-jug*pour
+   (state <s> ^name water-jug 
+              ^operator <o> +
+              ^jug <j1> <j2>)
+   (<o> ^name pour 
+         ^empty-jug.volume [3 5])
+   (<j1> ^volume 3 
+         ^contents [0 1 2 3])
+   (<j2> ^volume 5 
+         ^contents [0 1 2 3 4 5])
+-->
+   (<s> ^operator <o> = 0)
+}
