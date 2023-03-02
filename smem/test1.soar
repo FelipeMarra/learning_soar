@@ -1,0 +1,9 @@
+smem --enable
+
+smem --add {
+    (<a> ^name alice ^friend <b>)
+    (<b> ^name bob ^friend <a>)
+    (<c> ^name charley)
+}
+
+#smem --clear
