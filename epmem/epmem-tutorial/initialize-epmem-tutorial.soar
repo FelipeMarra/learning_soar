@@ -58,3 +58,21 @@ sp {epmem*apply*cbr-query
     (<n2> ^sub-feature value2
           ^sub-id <n3>)
 }
+
+sp {epmem*propose*next
+    (state <s> ^name epmem
+               ^epmem.command.query)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name next)
+}
+
+sp {epmem*apply*next
+    (state <s> ^operator <o>
+               ^epmem.command <cmd>)
+    (<o> ^name next)
+    (<cmd> ^query <q>)
+-->
+    (<cmd> ^query <q> -
+           ^next <next>)
+}
