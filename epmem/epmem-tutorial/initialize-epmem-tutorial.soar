@@ -1,0 +1,60 @@
+sp {propose*initialize-epmem-tutorial
+   (state <s> ^superstate nil
+             -^name)
+-->
+   (<s> ^operator <o> + =)
+   (<o> ^name initialize-epmem-tutorial)
+}
+
+sp {apply*initialize-epmem-tutorial
+   (state <s> ^operator <op>)
+   (<op> ^name initialize-epmem-tutorial)
+-->
+   (<s> ^name epmem
+        ^feature2 value
+        ^feature value3
+        ^id <e2>
+        ^id <e3>
+        ^other-id <e4>)
+    (<e2> ^sub-feature value2)
+    (<e3> ^sub-id <e5>)
+    (<e4> ^sub-id <e6>
+          ^sub-feature value2)
+}
+
+#Cue Based Retrieval
+sp {epmem*propose*cbr
+    (state <s> ^name epmem
+              -^epmem.command.<cmd>)
+-->
+    (<s> ^operator <o> + =)
+    (<o> ^name cbr)
+}
+
+sp {epmem*apply*cbr-clean
+    (state <s> ^operator.name cbr
+               ^feature2 <f2>
+               ^feature <f>
+               ^id <e2>
+               ^id <e3>
+               ^other-id <e4>)
+    (<e2> ^sub-feature value2)
+    (<e3> ^sub-id)
+-->
+    (<s> ^feature2 <f2> -
+         ^feature <f> -
+         ^id <e2> -
+         ^id <e3> -
+         ^other-id <e4> -)
+}
+
+sp {epmem*apply*cbr-query
+    (state <s> ^operator.name cbr
+               ^epmem.command <cmd>)
+-->
+    (<cmd> ^query <n1>)
+    (<n1> ^feature value
+          ^id <n2>)
+    (<n2> ^sub-feature value2
+          ^sub-id <n3>)
+}

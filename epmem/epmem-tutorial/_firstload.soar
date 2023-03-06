@@ -1,0 +1,3 @@
+epmem --set trigger dc
+epmem --set learning on
+watch --epmem

@@ -1,0 +1,3 @@
+pushd epmem-tutorial
+source epmem-tutorial_source.soar
+popd
